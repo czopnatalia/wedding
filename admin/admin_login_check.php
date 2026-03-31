@@ -11,7 +11,7 @@ $stmt->execute([$username]);
 $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Sprawdzamy poprawność hasła (jawne porównanie)
-if ($admin && $password === $admin['password_hash']) {
+if ($admin && password_verify($password, $admin['password_hash'])) {
 
     // Ustawiamy TYLKO dane logowania administratora
     $_SESSION['admin_logged_in'] = true;
