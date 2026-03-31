@@ -202,19 +202,32 @@ document.addEventListener("change", function(e) {
 });
 
 // DODAWANIE OSÓB
+// DODAWANIE OSÓB
 document.getElementById("add-person").addEventListener("click", () => {
     const wrapper = document.getElementById("persons-wrapper");
-    const first = wrapper.querySelector(".person-block");
+    const blocks = wrapper.querySelectorAll(".person-block");
+    const nextIndex = blocks.length; // Liczymy ile osób już jest, by nadać nowy numer
+
+    const first = blocks[0];
     const clone = first.cloneNode(true);
 
-    // reset wartości
-    clone.querySelectorAll("input").forEach(i => {
-        i.value = "";
-        if (i.type === "checkbox") i.checked = false;
+    // RESET WARTOŚCI I AKTUALIZACJA INDEKSÓW [ ]
+    clone.querySelectorAll("input, select").forEach(el => {
+        // Resetujemy wartości
+        if (el.type === "checkbox") el.checked = false;
+        else el.value = "";
+
+        // KLUCZOWE: Zmieniamy [0] na [1], [2] itd. w atrybucie name
+        if (el.name) {
+            el.name = el.name.replace(/\[\d+\]/, "[" + nextIndex + "]");
+        }
     });
-    clone.querySelector("select").value = "";
+
+    // Resetowanie widoczności sekcji diety
     clone.querySelector(".diet-section").style.display = "none";
-    clone.querySelector(".other-text").style.display = "none";
+    if (clone.querySelector(".other-text")) {
+        clone.querySelector(".other-text").style.display = "none";
+    }
 
     wrapper.appendChild(clone);
 });

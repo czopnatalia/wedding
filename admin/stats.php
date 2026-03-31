@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header("Location: /wedding_hub/admin/admin_login.php");
     exit;
 }
@@ -17,11 +17,48 @@ $invited = 80; // liczba zaproszonych osób
 $noResponse = $invited - ($coming + $notComing);
 
 // Diety
-$gluten = $db->query("SELECT COUNT(*) FROM guests WHERE diet_gluten_free = 1")->fetchColumn();
-$vege = $db->query("SELECT COUNT(*) FROM guests WHERE diet_vege = 1")->fetchColumn();
-$vegan = $db->query("SELECT COUNT(*) FROM guests WHERE diet_vegan = 1")->fetchColumn();
-$lactose = $db->query("SELECT COUNT(*) FROM guests WHERE diet_lactose = 1")->fetchColumn();
-$other = $db->query("SELECT COUNT(*) FROM guests WHERE diet_other IS NOT NULL AND diet_other != ''")->fetchColumn();
+// --- STATYSTYKI GŁÓWNE ---
+$coming = $db->query("SELECT COUNT(*) FROM guests WHERE attending = 1")->fetchColumn();
+$notComing = $db->query("SELECT COUNT(*) FROM guests WHERE attending = 0")->fetchColumn();
+$invited = 80; 
+$noResponse = $invited - ($coming + $notComing);
+
+// --- NOWA LOGIKA DIET (GRUPOWANIE) ---
+// Pobieramy wszystkich, którzy przyjdą
+$stmt = $db->query("SELECT diet_gluten_free, diet_vege, diet_vegan, diet_lactose, diet_other FROM guests WHERE attending = 1");
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$diet_summary = [];
+
+foreach ($rows as $row) {
+    $guest_diets = [];
+
+    if ($row['diet_gluten_free']) $guest_diets[] = "Bez glutenu";
+    if ($row['diet_vege'])        $guest_diets[] = "Wege";
+    if ($row['diet_vegan'])       $guest_diets[] = "Wegańska";
+    if ($row['diet_lactose'])     $guest_diets[] = "Bez laktozy";
+    
+    if (!empty($row['diet_other'])) {
+        $guest_diets[] = htmlspecialchars($row['diet_other']);
+    }
+
+    // Tworzymy klucz dla kuchni
+    if (empty($guest_diets)) {
+        $key = "Standardowa";
+    } else {
+        sort($guest_diets); // Sortujemy, żeby "Wege+Bez glutenu" zawsze było tak samo zapisane
+        $key = implode(" + ", $guest_diets);
+    }
+
+    // Liczymy ten konkretny zestaw
+    if (!isset($diet_summary[$key])) {
+        $diet_summary[$key] = 0;
+    }
+    $diet_summary[$key]++;
+}
+
+// Sortujemy listę, żeby zestawy były alfabetycznie
+ksort($diet_summary);
 ?>
 
 <style>
@@ -149,12 +186,23 @@ $other = $db->query("SELECT COUNT(*) FROM guests WHERE diet_other IS NOT NULL AN
         </div>
     </div>
 
-    <h3 style="margin-top:50px;">Diety:</h3>
-    <p>Bez glutenu: <strong><?= $gluten ?></strong></p>
-    <p>Wege: <strong><?= $vege ?></strong></p>
-    <p>Wegańska: <strong><?= $vegan ?></strong></p>
-    <p>Bez laktozy: <strong><?= $lactose ?></strong></p>
-    <p>Inne: <strong><?= $other ?></strong></p>
+    <h3 style="margin-top:50px;">Zapotrzebowanie dla kuchni (gotowe dania):</h3>
+    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
+        <?php if (empty($diet_summary)): ?>
+            <p>Brak potwierdzonych gości z dietami.</p>
+        <?php else: ?>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <?php foreach ($diet_summary as $nazwa_dania => $ilosc): ?>
+                    <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between;">
+                        <span><strong><?= $nazwa_dania ?></strong></span>
+                        <span style="background: var(--accent); color: #000; padding: 2px 10px; border-radius: 20px; font-weight: bold;">
+                            <?= $ilosc ?> szt.
+                        </span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+    </div>
 
     <a href="/wedding_hub/admin/dashboard.php" class="login-btn" style="margin-top:30px; display:inline-block;">
         Powrót

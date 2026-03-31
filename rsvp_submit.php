@@ -24,38 +24,38 @@ $d_none = $_POST['dieta_choice'] ?? [];
 $duplikaty = []; // lista osób, które już istnieją
 
 for ($i = 0; $i < count($imiona); $i++) {
+    // Pomijamy, jeśli imię jest puste (zabezpieczenie)
+    if (empty(trim($imiona[$i]))) continue;
 
     $name = trim($imiona[$i] . " " . $nazwiska[$i]);
     $attending = ($obecnosci[$i] === "tak") ? 1 : 0;
 
-    // Czy wybrano "brak diety"
-    $no_diet = isset($d_none[$i]) && $d_none[$i] === "brak";
+    // Inicjalizacja zmiennych diety dla KAŻDEJ osoby osobno
+    $gluten = 0;
+    $vege = 0;
+    $vegan = 0;
+    $lactose = 0;
+    $other = null;
 
-    // Dieta
-    if ($attending && !$no_diet) {
-        $gluten = isset($d_gluten[$i]) ? 1 : 0;
-        $vege = isset($d_vege[$i]) ? 1 : 0;
-        $vegan = isset($d_vegan[$i]) ? 1 : 0;
-        $lactose = isset($d_lactose[$i]) ? 1 : 0;
-        $other = $d_other[$i] ?? null;
-    } else {
-        $gluten = 0;
-        $vege = 0;
-        $vegan = 0;
-        $lactose = 0;
-        $other = null;
+    if ($attending) {
+        // Sprawdzamy, czy dana dieta została zaznaczona dla osoby o indeksie $i
+        if (isset($d_gluten[$i])) $gluten = 1;
+        if (isset($d_vege[$i]))   $vege = 1;
+        if (isset($d_vegan[$i]))  $vegan = 1;
+        if (isset($d_lactose[$i])) $lactose = 1;
+        if (!empty($d_other[$i])) $other = $d_other[$i];
     }
 
-    // SPRAWDZENIE, CZY OSOBA JUŻ ISTNIEJE
+    // SPRAWDZENIE DUPLIKATU
     $check = $db->prepare("SELECT id FROM guests WHERE name = ?");
     $check->execute([$name]);
 
     if ($check->rowCount() > 0) {
         $duplikaty[] = $name;
-        continue; // przechodzimy do kolejnej osoby
+        continue;
     }
 
-    // ZAPIS NOWEJ OSOBY
+    // ZAPIS DO BAZY
     $insert = $db->prepare("
         INSERT INTO guests 
         (code, name, attending, diet_gluten_free, diet_vege, diet_vegan, diet_lactose, diet_other, is_companion)
@@ -71,7 +71,7 @@ for ($i = 0; $i < count($imiona); $i++) {
         $vegan,
         $lactose,
         $other,
-        1
+        ($i === 0 ? 0 : 1) // Pierwsza osoba to gość główny (0), reszta to towarzyszące (1)
     ]);
 }
 
