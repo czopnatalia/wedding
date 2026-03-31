@@ -8,364 +8,121 @@ if (!isset($_SESSION['admin'])) {
 require_once "includes/db.php";
 include 'includes/header.php';
 
-$success = false;
-$duplicateMessages = [];
-
-// Upload wielu zdjęć
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photos'])) {
-
-    // pobierz istniejące hashe z bazy
-    $existingHashes = array_map(
-        fn($row) => $row['filehash'],
-        $db->query("SELECT filehash FROM photos WHERE filehash IS NOT NULL")->fetchAll(PDO::FETCH_ASSOC)
-    );
-
-    foreach ($_FILES['photos']['tmp_name'] as $index => $tmpName) {
-
-        if ($_FILES['photos']['error'][$index] === 0 && is_uploaded_file($tmpName)) {
-
-            $originalName = $_FILES['photos']['name'][$index];
-
-            // hash pliku – wykrywanie duplikatów
-            $fileHash = md5_file($tmpName);
-
-            if (in_array($fileHash, $existingHashes)) {
-                $duplicateMessages[] = "Zdjęcie <strong>{$originalName}</strong> zostało już wcześniej dodane.";
-                continue;
-            }
-
-            $ext = pathinfo($originalName, PATHINFO_EXTENSION);
-            $newName = uniqid() . "." . $ext;
-            $target = "uploads/gallery/" . $newName;
-
-            if (move_uploaded_file($tmpName, $target)) {
-
-                $stmt = $db->prepare("
-                    INSERT INTO photos (filename, uploader_name, status, filehash)
-                    VALUES (?, ?, 'approved', ?)
-                ");
-                $stmt->execute([$newName, 'admin', $fileHash]);
-
-                $existingHashes[] = $fileHash;
-                $success = true;
-            }
-        }
-    }
-}
-
-// Pobranie zdjęć
-$stmt = $db->query("SELECT * FROM photos ORDER BY id DESC");
-$photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Pobieranie zatwierdzonych zdjęć przez PDO
+$res = $db->query("SELECT * FROM photos WHERE status='approved' ORDER BY uploaded_at DESC");
 ?>
-
-<style>
-.section-card {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 20px 30px;
-}
-
-/* --- PRZYCISKI --- */
-.return-btn,
-.file-btn {
-    background: var(--accent);
-    color: #000;
-    padding: 12px 26px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-    display: inline-block;
-    transition: 0.3s;
-    border: none;
-    text-transform: uppercase;
-}
-
-.return-btn:hover,
-.file-btn:hover {
-    background: #ffe2b3;
-}
-
-/* Ukrywamy input file */
-input[type="file"] {
-    display: none;
-}
-
-/* --- LISTA PLIKÓW --- */
-#file-list {
-    margin-top: 20px;
-}
-
-.file-item {
-    display: flex;
-    align-items: center;
-    background: rgba(255,255,255,0.15);
-    padding: 10px 14px;
-    border-radius: 10px;
-    margin-bottom: 8px;
-    font-size: 15px;
-}
-
-.file-thumb {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-right: 12px;
-}
-
-.file-name {
-    flex-grow: 1;
-}
-
-.file-remove {
-    cursor: pointer;
-    font-weight: bold;
-    color: #c0392b;
-    font-size: 22px;
-}
-
-/* --- KOMUNIKATY --- */
-#upload-success {
-    background: transparent;
-    color: #2e7d32;
-    margin-top: 20px;
-    font-weight: 600;
-    display: <?php echo $success ? "block" : "none"; ?>;
-}
-
-.duplicate-info {
-    margin-top: 15px;
-}
-
-.duplicate-item {
-    color: #2e7d32;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-/* --- GALERIA --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 40px;
-}
-
-.gallery-item {
-    overflow: hidden;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    transition: transform .3s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.06);
-}
-
-/* --- LIGHTBOX --- */
-#lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-#lightbox img {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: 10px;
-}
-
-.lightbox-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 40px;
-    color: white;
-    cursor: pointer;
-    padding: 20px;
-    user-select: none;
-}
-
-#prev { left: 20px; }
-#next { right: 20px; }
-
-#download {
-    position: absolute;
-    bottom: 40px;
-    background: var(--accent);
-    color: #000;
-    padding: 12px 26px;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: 0.3s;
-    text-transform: uppercase;
-}
-
-#download:hover {
-    background: #ffe2b3;
-}
-</style>
 
 <div class="section-card">
     <h2>Galeria zdjęć</h2>
+    
+    <div style="margin-bottom: 40px; text-align: center; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+        
+        <a href="upload.php" class="btn-elegant">
+            Prześlij swoje zdjęcie
+        </a>
 
-    <form id="upload-form" method="POST" enctype="multipart/form-data">
-        <label for="photos" class="file-btn">Wybierz pliki</label>
-        <input type="file" id="photos" name="photos[]" multiple>
+        <a href="download_all.php" class="btn-elegant" style="background-color: #8c7e6d; display: inline-flex; align-items: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Pobierz całą galerię (.zip)
+        </a>
+    </div>
 
-        <div id="file-list"></div>
-
-        <button type="submit" class="return-btn" style="margin-top:20px;">Prześlij zdjęcia</button>
-
-        <div id="upload-success">Pliki przesłane pomyślnie!</div>
-
-        <?php if (!empty($duplicateMessages)): ?>
-            <div class="duplicate-info">
-                <?php foreach ($duplicateMessages as $msg): ?>
-                    <div class="duplicate-item"><?= $msg ?></div>
-                <?php endforeach; ?>
+    <div class="gallery-container" style="display:flex; flex-wrap:wrap; gap:20px; justify-content: center;">
+        <?php while ($row = $res->fetch(PDO::FETCH_ASSOC)): ?>
+            <div class="gallery-item" style="text-align: center; width: 220px;">
+                <img src="uploads/approved/<?= htmlspecialchars($row['filename']) ?>" 
+                     class="gallery-img"
+                     alt="Zdjęcie weselne"
+                     onclick="openLightbox(this.src)"
+                     style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px; cursor: pointer; display: block; box-shadow: var(--shadow-soft);">
             </div>
-        <?php endif; ?>
-    </form>
-
-    <div class="gallery-grid">
-        <?php foreach ($photos as $p): ?>
-            <?php if (!empty($p['filename']) && file_exists("uploads/gallery/" . $p['filename'])): ?>
-                <div class="gallery-item">
-                    <img src="uploads/gallery/<?= htmlspecialchars($p['filename']) ?>"
-                         data-full="uploads/gallery/<?= htmlspecialchars($p['filename']) ?>">
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <?php endwhile; ?>
     </div>
 </div>
 
-<div id="lightbox">
-    <span id="prev" class="lightbox-btn">&#10094;</span>
-    <img id="lightbox-img">
-    <span id="next" class="lightbox-btn">&#10095;</span>
-    <a id="download" download>Pobierz zdjęcie</a>
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    
+    <button class="lightbox-arrow prev" id="prevBtn" onclick="changeImage(-1); event.stopPropagation();"></button>
+    
+    <div class="lightbox-frame" onclick="event.stopPropagation()" style="text-align: center; position: relative; display: block;">
+        
+        <a href="" id="downloadBtn" download 
+           style="position: absolute; top: 15px; right: 15px; z-index: 10; cursor: pointer; background: rgba(255,255,255,0.8); border-radius: 50%; padding: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+        </a>
+
+        <img src="" id="lightbox-img" class="lightbox-img">
+    </div>
+
+    <button class="lightbox-arrow next" id="nextBtn" onclick="changeImage(1); event.stopPropagation();"></button>
 </div>
 
 <script>
-let selectedFiles = [];
-const photosInput = document.getElementById('photos');
-const fileList = document.getElementById('file-list');
+let currentImages = [];
+let currentIndex = 0;
 
-photosInput.addEventListener('change', function(e) {
-    selectedFiles = Array.from(e.target.files);
-    renderFileList();
+function updateArrows() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (currentIndex === 0) prevBtn.classList.add('hidden');
+    else prevBtn.classList.remove('hidden');
+    
+    if (currentIndex === currentImages.length - 1) nextBtn.classList.add('hidden');
+    else nextBtn.classList.remove('hidden');
+}
+
+function openLightbox(src) {
+    const imgElements = document.querySelectorAll('.gallery-img');
+    currentImages = Array.from(imgElements).map(img => img.src);
+    
+    currentIndex = currentImages.indexOf(src);
+    
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    img.src = src;
+    downloadBtn.href = src;
+    
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+    
+    updateArrows();
+}
+
+function changeImage(direction) {
+    currentIndex += direction;
+    
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex >= currentImages.length) currentIndex = currentImages.length - 1;
+    
+    const newSrc = currentImages[currentIndex];
+    document.getElementById('lightbox-img').src = newSrc;
+    document.getElementById('downloadBtn').href = newSrc; 
+    
+    updateArrows();
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === "ArrowLeft") changeImage(-1);
+    if (e.key === "ArrowRight") changeImage(1);
+    if (e.key === "Escape") closeLightbox();
 });
-
-function renderFileList() {
-    fileList.innerHTML = "";
-
-    selectedFiles.forEach((file, index) => {
-        const item = document.createElement('div');
-        item.className = "file-item";
-
-        const thumb = document.createElement('img');
-        thumb.className = "file-thumb";
-        thumb.src = URL.createObjectURL(file);
-
-        const name = document.createElement('span');
-        name.className = "file-name";
-        name.textContent = file.name;
-
-        const remove = document.createElement('span');
-        remove.className = "file-remove";
-        remove.innerHTML = "&times;";
-        remove.onclick = () => removeFile(index);
-
-        item.appendChild(thumb);
-        item.appendChild(name);
-        item.appendChild(remove);
-
-        fileList.appendChild(item);
-    });
-}
-
-function removeFile(index) {
-    selectedFiles.splice(index, 1);
-    renderFileList();
-
-    const dataTransfer = new DataTransfer();
-    selectedFiles.forEach(f => dataTransfer.items.add(f));
-    photosInput.files = dataTransfer.files;
-}
-
-/* --- LIGHTBOX --- */
-let images = [];
-let index = 0;
-
-function initGalleryImages() {
-    images = [...document.querySelectorAll('.gallery-item img')];
-
-    images.forEach((img, i) => {
-        img.addEventListener('click', () => {
-            index = i;
-            showImage();
-        });
-    });
-}
-
-function showImage() {
-    const src = images[index].dataset.full;
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('download').href = src;
-    document.getElementById('lightbox').style.display = 'flex';
-}
-
-document.getElementById('prev').onclick = () => {
-    index = (index - 1 + images.length) % images.length;
-    showImage();
-};
-
-document.getElementById('next').onclick = () => {
-    index = (index + 1) % images.length;
-    showImage();
-};
-
-document.getElementById('lightbox').onclick = (e) => {
-    if (e.target.id === 'lightbox') {
-        document.getElementById('lightbox').style.display = 'none';
-    }
-};
-
-/* --- STRZAŁKI KLAWIATURY + ESC --- */
-document.addEventListener('keydown', function(e) {
-    const lb = document.getElementById('lightbox');
-    if (lb.style.display !== 'flex') return;
-
-    if (e.key === "ArrowRight") {
-        index = (index + 1) % images.length;
-        showImage();
-    }
-    if (e.key === "ArrowLeft") {
-        index = (index - 1 + images.length) % images.length;
-        showImage();
-    }
-    if (e.key === "Escape") {
-        lb.style.display = 'none';
-    }
-});
-
-document.addEventListener('DOMContentLoaded', initGalleryImages);
 </script>
 
 <?php include 'includes/footer.php'; ?>
