@@ -1,6 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION['admin'])) {
+    header("Location: /wedding_hub/admin/admin_login.php");
+    exit;
+}
+
+require_once "includes/db.php";
 include 'includes/header.php';
-include 'includes/db.php';
 
 // Pobieranie zatwierdzonych zdjęć przez PDO
 $res = $db->query("SELECT * FROM photos WHERE status='approved' ORDER BY uploaded_at DESC");
