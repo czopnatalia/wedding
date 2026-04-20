@@ -28,13 +28,14 @@ if (!$has_access && !$is_index) {
 
 <header class="site-header">
     <div class="site-header-inner">
-        <h1 class="nav-logo">Natalia i Łukasz</h1>
-        
-        <nav class="main-nav">
-            <a class="nav-link" href="home.php">Strona główna</a>
-            <a class="nav-link" href="rsvp.php">Potwierdź obecność</a>
-            <a class="nav-link" href="galeria.php">Galeria zdjęć</a>
-            <a class="nav-link" href="admin/admin_login.php">Administrator</a>
+        <div class="site-title-panel fade-in-up">
+            <h1>Natalia i Łukasz</h1>
+        </div>
+        <nav class="main-nav fade-in-up" style="animation-delay:0.15s;">
+            <a class="nav-tile" href="home.php">Strona główna</a>
+            <a class="nav-tile" href="rsvp.php">Potwierdź obecność</a>
+            <a class="nav-tile" href="galeria.php">Galeria zdjęć</a>
+            <a class="nav-tile" href="admin/admin_login.php">Administrator</a>
         </nav>
     </div>
 </header>
