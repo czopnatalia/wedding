@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         /* TREŚĆ NAD SZKŁEM */
         .panel {
-            max-width: 400px;
+            max-width: 450px;
             width: 100%;
             text-align: center;
             color: var(--text) !important;
@@ -182,11 +182,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .split-content { 
                 flex: none;
                 width: 100%;
-                padding: 40px 0; 
+                padding: 40px 20px; 
                 min-height: 60vh;
             }
             .panel {
-                max-width: 90%;
+                max-width: 100%;
             }
             h1 { font-size: 2rem; }
             .countdown { 
