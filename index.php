@@ -25,22 +25,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         :root {
             --accent: #8c7e6d;
-            --text: #1a1a1a; /* Bardziej czarny dla elegancji */
-            --bg-soft: #fcfaf8;
+            --text: #1a1a1a;
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Blokujemy przewijanie na stronie wejściowej */
+            margin: 0; padding: 0; height: 100%;
+            overflow: hidden;
             font-family: "Inter", sans-serif;
         }
 
+        .split-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* LEWA STRONA: ZDJĘCIE OSTRE */
+        .split-image {
+            flex: 1;
+            background-image: url('assets/hero.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* PRAWA STRONA: EFEKT SZRONIONEGO SZKŁA */
         .split-content {
             flex: 1;
-            /* Ustawiamy to samo tło co po lewej */
-            background-image: url('assets/hero.jpg'); 
+            /* Ustawiamy to samo tło co po lewej, aby blur miał co rozmywać */
+            background-image: url('assets/hero.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -50,48 +63,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             position: relative;
         }
 
-        /* LEWA STRONA: ZDJĘCIE */
-        .split-image {
-            flex: 1;
-            background-image: url('assets/hero.jpg'); /* WPISZ SWOJĄ NAZWĘ PLIKU */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        /* PRAWA STRONA: BIAŁA KARTA */
-        .split-content {
-            flex: 1;
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-        }
-
+        /* WARSTWA "SZKŁA" - To tutaj dzieje się magia Twojego CSS */
         .split-content::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* To nakłada biały filtr i rozmywa zdjęcie pod spodem */
-            background: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(30px); /* Siła rozmazania chmur */
-            -webkit-backdrop-filter: blur(30px);
+            top: 0; left: 0; right: 0; bottom: 0;
+            
+            /* Twoja zmiana: biały z alpha 0.3 */
+            background: rgba(255, 255, 255, 0.3); 
+            
+            /* Twoje rozmycie 10px (możesz zwiększyć do 20px dla bardziej "chmurowego" efektu) */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            
             z-index: 0;
         }
 
+        /* TREŚĆ NAD SZKŁEM */
         .panel {
             max-width: 450px;
             width: 100%;
             text-align: center;
             color: var(--text);
-            position: relative; /* Wyciąga treść nad warstwę blur */
-            z-index: 1;
+            position: relative;
+            z-index: 1; /* Musi być wyżej niż ::before */
         }
 
+        /* Stylizacja nagłówka wewnątrz panelu, aby pasowała do reszty */
         h1 {
             font-family: "Playfair Display", serif;
             font-size: clamp(2.2rem, 4vw, 3rem);
@@ -117,14 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             opacity: 0.2;
         }
 
-        .countdown-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            opacity: 0.6;
-        }
-
+        /* Styl dla pól licznika */
         .countdown {
             display: flex;
             justify-content: center;
@@ -132,53 +123,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-bottom: 50px;
         }
 
-        .time-box { text-align: center; }
-        .time-val { font-size: 1.6rem; font-weight: 200; display: block; }
-        .time-label { font-size: 0.6rem; text-transform: uppercase; opacity: 0.5; letter-spacing: 1px; }
+        .time-val { font-size: 1.8rem; font-weight: 300; display: block; }
+        .time-label { font-size: 0.65rem; text-transform: uppercase; opacity: 0.5; }
 
-        /* FORMULARZ */
-        .form-container { max-width: 280px; margin: 0 auto; }
-        
+        /* Styl pola hasła - bardziej subtelny */
         input[type="password"] {
             width: 100%;
             padding: 12px 0;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.2);
             font-size: 1rem;
             margin-bottom: 30px;
             outline: none;
             text-align: center;
+        }
+
+        button {
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            padding: 12px 45px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        input[type="password"]:focus { border-bottom-color: #000; }
-
-        button {
-            background: #000;
-            color: #fff;
-            border: 1px solid #000;
-            padding: 12px 40px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            transition: 0.4s;
-        }
-
         button:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        .error { color: #b05a5a; font-size: 0.8rem; margin-top: 20px; }
-
-        /* DOPASOWANIE DO TELEFONÓW */
-        @media (max-width: 850px) {
-            .split-container { flex-direction: column; overflow-y: auto; }
-            .split-image { height: 40vh; flex: none; }
-            .split-content { flex: 1; padding: 60px 20px; }
-            h1 { font-size: 2rem; }
+            background: var(--accent);
         }
     </style>
 </head>
