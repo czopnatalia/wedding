@@ -156,7 +156,7 @@ $diet_counts = [
                         echo implode(", ", $diets);
                     ?>
                 </td>
-                <td><?= htmlspecialchars($g['song']) ?></td>
+                <td><?= htmlspecialchars($g['song']); echo implode(", ", $diets); ?></td>
             </tr>
 
         <?php endforeach; ?>

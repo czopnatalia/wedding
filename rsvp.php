@@ -154,13 +154,13 @@ include 'includes/header.php';
                         <input type="text" name="dieta_other_text[0]" class="other-text" placeholder="Wpisz inne wymagania" style="display:none;">
 
                     </div>
-                </div>
-                    
-                <div style="margin-top: 20px;">
-                    <label style="margin-bottom: 8px;">Podaj tytuł piosenki, którą chcesz usłyszeć na weselu</label>
-                    <input type="text" name="piosenka[0]" placeholder="Tytuł i wykonawca" style="width: 100%;">
-                </div>
                 
+                    
+                    <div style="margin-top: 20px;">
+                        <label style="margin-bottom: 8px;">Podaj tytuł piosenki, którą chcesz usłyszeć na weselu</label>
+                        <input type="text" name="piosenka[0]" placeholder="Tytuł i wykonawca" style="width: 100%;">
+                    </div>
+    </div>
             </div>
 
         </div>
