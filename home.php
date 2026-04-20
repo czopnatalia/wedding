@@ -3,229 +3,246 @@ include 'includes/header.php';
 ?>
 
 <style>
-/* PANEL GŁÓWNY — SPÓJNY ZE STYLEM SECTION-CARD */
+/* KONTENER GŁÓWNY */
 .main-panel {
     width: 100%;
-    max-width: 1100px;
-    margin: 40px auto 80px;
-    padding: 32px 30px;
+    max-width: 900px; /* Nieco węższy dla lepszego skupienia wzroku */
+    margin: 60px auto 100px;
+    padding: 60px 40px;
     border-radius: var(--radius-lg);
-    
-    /* ZMIANA: Zamiast var(--bg-card) dajemy rgba */
-    background: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px);
-    
-    /* ZMIANA: Subtelniejsza ramka pasująca do szkła */
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: var(--shadow-soft);
+    text-align: center;
+}
 
-    /* WYŁĄCZAMY HOVER */
-    transition: none !important;
+/* NAGŁÓWKI */
+.wedding-date-hero {
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
 }
 
 .main-panel h2 {
     font-family: "Playfair Display", serif;
-    font-size: 2rem;
-    margin-bottom: 25px;
-    color: var(--text-main);
-    text-align: left;
-}
-
-/* INFORMACJA O RSVP */
-.rsvp-info {
-    font-size: 1.3rem;
-    color: var(--text-main);
+    font-size: 2.8rem;
     margin-bottom: 40px;
-    text-align: center;
-}
-
-.rsvp-info a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s ease;
-}
-
-.rsvp-info a:hover {
     color: var(--text-main);
+    font-weight: 400;
 }
 
-/* SEKCJA SZCZEGÓŁÓW */
-.details-section {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.details-section h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 1.8rem;
-    color: var(--text-main);
-    text-align: left;
-
-    /* DODAJ TE TRZY LINIE: */
-    border-top: 1px solid rgba(255, 255, 255, 0.3); /* Biała, półprzezroczysta linia */
-    padding-top: 30px;                             /* Odstęp tekstu od linii */
-    margin-top: 20px;                              /* Odstęp linii od RSVP powyżej */
-    margin-bottom: 25px;                           /* Odstęp od treści pod spodem */
-}
-
-/* Kontener pojedynczego wiersza szczegółów */
-.detail-item-row {
+/* LINIA ROZDZIELAJĄCA Z ORNAMENTEM */
+.divider {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    color: var(--accent);
+    opacity: 0.6;
+}
+.divider::before, .divider::after {
+    content: "";
+    height: 1px;
+    width: 80px;
+    background: currentColor;
+    margin: 0 15px;
+}
+
+/* INFORMACJA RSVP - Bardziej prestiżowa */
+.rsvp-card {
     background: rgba(255, 255, 255, 0.3);
-    padding: 15px 20px;
+    padding: 30px;
     border-radius: var(--radius-md);
-    margin-bottom: 15px;
-    gap: 15px;
-    transition: transform 0.3s ease, background 0.3s ease;
+    margin-bottom: 60px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
-.detail-item-row:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: translateX(5px); /* Delikatne wysunięcie w prawo */
+.rsvp-card p {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+.btn-rsvp {
+    display: inline-block;
+    padding: 12px 35px;
+    background: var(--text-main);
+    color: #fff !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+}
+.btn-rsvp:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Kółeczko z ikonką (spójne z kontaktem) */
+/* SEKCJA SZCZEGÓŁÓW — ELEGANCKA LISTA */
+.details-section h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    align-items: center;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
 .detail-icon-box {
-    width: 45px;
-    height: 45px;
-    background: white;
+    width: 50px;
+    height: 50px;
+    background: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--accent);
-    flex-shrink: 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* Tekst szczegółów */
 .detail-info {
-    flex-grow: 1;
-    font-size: 1.05rem;
-    color: var(--text-main);
-    line-height: 1.4;
+    padding: 0 20px;
 }
-
 .detail-info strong {
     display: block;
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+.detail-info span {
+    font-size: 1rem;
+    color: var(--text-main);
+    opacity: 0.8;
+}
+
+.map-link {
+    text-align: right;
+}
+.map-link img {
+    width: 35px;
+    filter: sepia(0.5) contrast(0.8); /* Nadaje pinezce elegancki, złoty odcień */
+    transition: 0.3s;
+}
+.map-link img:hover {
+    transform: scale(1.1);
+    filter: sepia(0);
+}
+
+/* KONTAKT */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 50px;
+}
+.contact-card {
+    padding: 20px;
+    border-right: 1px solid rgba(0,0,0,0.05);
+}
+.contact-card:last-child { border-right: none; }
+
+.contact-name {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+.contact-phone {
     color: var(--accent);
-    text-transform: uppercase;
-    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: 500;
     letter-spacing: 1px;
+    font-size: 1.1rem;
 }
 
-/* Przycisk mapy (pinezka) */
-.mini-map-btn {
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-}
-
-.mini-map-btn img {
-    width: 30px;
-    height: 30px;
-    display: block;
-}
-
-.mini-map-btn:hover {
-    transform: scale(1.2) rotate(10deg);
-}
-
-/* RWD - na telefonach */
-@media (max-width: 600px) {
-    .detail-item-row {
-        flex-wrap: wrap;
-        justify-content: center;
+/* RWD */
+@media (max-width: 768px) {
+    .detail-row {
+        grid-template-columns: 1fr;
         text-align: center;
-        padding: 20px;
+        gap: 15px;
     }
-    .detail-info {
-        width: 100%;
-    }
-    .mini-map-btn {
-        margin-top: 10px;
-    }
+    .detail-icon-box { margin: 0 auto; }
+    .map-link { text-align: center; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); }
 }
 </style>
 
 <div class="main-panel">
+    <span class="wedding-date-hero">20 Czerwca 2026</span>
+    <h2>Zaproszenie</h2>
+    
+    <div class="divider">✧</div>
 
-    <div class="rsvp-info">
-        Prosimy o potwierdzenie przybycia poprzez formularz w zakładce:
-        <a href="rsvp.php">POTWIERDŹ OBECNOŚĆ</a>.
+    <div class="rsvp-card">
+        <p>Będzie nam niezmiernie miło świętować ten dzień razem z Wami.</p>
+        <a href="rsvp.php" class="btn-rsvp">Potwierdź obecność</a>
     </div>
 
     <div class="details-section">
-        <h3>Szczegóły uroczystości</h3>
+        <h3>Harmonogram Uroczystości</h3>
 
-        <div class="detail-item-row">
+        <div class="detail-row">
             <div class="detail-icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22l-8-5V7l8-5 8 5v10l-8 5z"></path><path d="M12 22V12"></path><path d="M12 12l8-5"></path><path d="M12 12L4 7"></path></svg>
             </div>
             <div class="detail-info">
-                <strong>Ceremonia:</strong> 
-                <span>Parafia św. Jana Pawła II w Nowym Sączu - godzina 13:30</span>
+                <strong>Ceremonia Zaślubin</strong>
+                <span>Parafia św. Jana Pawła II w Nowym Sączu<br>Godzina 13:30</span>
             </div>
-            <a href="https://maps.google.com/?q=Parafia+Jana+Pawla+II+Nowy+Sacz" target="_blank" class="mini-map-btn" title="Zobacz na mapie">
-                <img src="assets/pin.png" alt="mapa">
-            </a>
+            <div class="map-link">
+                <a href="https://maps.google.com/?q=Parafia+św.+Jana+Pawła+II+Nowy+Sącz" target="_blank">
+                    <img src="assets/pin.png" alt="Mapa">
+                </a>
+            </div>
         </div>
 
-        <div class="detail-item-row">
+        <div class="detail-row">
             <div class="detail-icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l-2 8H8l-2-8z"></path><line x1="12" y1="11" x2="12" y2="21"></line><line x1="8" y1="21" x2="16" y2="21"></line></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"></path><path d="M4 21h16"></path><path d="M7 11V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"></path><path d="M12 2v3"></path></svg>
             </div>
             <div class="detail-info">
-                <strong>Wesele:</strong> 
-                <span>Restauracja Stacja Wola, Wola Kurowska 69</span>
+                <strong>Przyjęcie Weselne</strong>
+                <span>Restauracja Stacja Wola<br>Wola Kurowska 69</span>
             </div>
-            <a href="https://maps.google.com/?q=Stacja+Wola+Wola+Kurowska" target="_blank" class="mini-map-btn" title="Zobacz na mapie">
-                <img src="assets/pin.png" alt="mapa">
-            </a>
-        </div>
-
-
-        <div class="contact-section" style="margin-top: 60px; text-align: center;">
-            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 30px; color: var(--text-main);">
-                Kontakt:
-            </h3>
-            
-            <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-                
-                <div class="contact-row-item">
-                    <div style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); margin-bottom: 10px;">
-                        Natalia
-                    </div>
-                    <a href="tel:+48513999738" class="contact-link-row">
-                        <div class="contact-icon-small">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.28-2.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                        </div>
-                        <span>513 999 738</span>
-                    </a>
-                </div>
-
-                <div class="contact-row-item">
-                    <div style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); margin-bottom: 10px;">
-                        Łukasz
-                    </div>
-                    <a href="tel:+48512899847" class="contact-link-row">
-                        <div class="contact-icon-small">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.28-2.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                        </div>
-                        <span>512 899 847</span>
-                    </a>
-                </div>
-
+            <div class="map-link">
+                <a href="https://maps.google.com/?q=Restauracja+Stacja+Wola" target="_blank">
+                    <img src="assets/pin.png" alt="Mapa">
+                </a>
             </div>
         </div>
+    </div>
 
+    <div class="divider">✧</div>
+
+    <div class="contact-section">
+        <h3>Kontakt</h3>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-name">Natalia</div>
+                <a href="tel:+48513999738" class="contact-phone">513 999 738</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-name">Łukasz</div>
+                <a href="tel:+48512899847" class="contact-phone">512 899 847</a>
+            </div>
+        </div>
     </div>
 </div>
 
