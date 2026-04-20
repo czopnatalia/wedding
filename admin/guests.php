@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: /wedding_hub/admin/admin_login.php");
+    header("Location: /wedding/admin/admin_login.php");
     exit;
 }
 
@@ -112,8 +112,8 @@ $diet_counts = [
     </div>
 
     <!-- EXPORT -->
-    <a href="/wedding_hub/admin/export_csv.php" class="export-btn">Eksport CSV</a>
-    <a href="/wedding_hub/admin/export_pdf.php" class="export-btn">Eksport PDF</a>
+    <a href="/wedding/admin/export_csv.php" class="export-btn">Eksport CSV</a>
+    <a href="/wedding/admin/export_pdf.php" class="export-btn">Eksport PDF</a>
 
     <table class="admin-table" id="guestTable">
         <thead>
@@ -183,7 +183,7 @@ $diet_counts = [
         </ul>
     </div>
 
-    <a href="/wedding_hub/admin/dashboard.php" class="return-btn">
+    <a href="/wedding/admin/dashboard.php" class="return-btn">
     Powrót
     </a>
 </div>

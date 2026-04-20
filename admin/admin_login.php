@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Jeśli admin już jest zalogowany, nie pokazuj mu formularza, tylko przenieś do dashboardu
 if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-    header("Location: /wedding_hub/admin/dashboard.php");
+    header("Location: /wedding/admin/dashboard.php");
     exit;
 }
 
@@ -85,7 +85,7 @@ include '../includes/header.php';
     <?php endif; ?>
 
 
-    <form action="/wedding_hub/admin/admin_login_check.php" method="POST">
+    <form action="/wedding/admin/admin_login_check.php" method="POST">
         <input type="text" name="username" class="login-input" placeholder="Login" required>
         <input type="password" name="password" class="login-input" placeholder="Hasło" required>
         <button type="submit" class="login-btn">Zaloguj</button>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: /wedding_hub/admin/admin_login.php");
+    header("Location: /wedding/admin/admin_login.php");
     exit;
 }
 
@@ -204,7 +204,7 @@ ksort($diet_summary);
         <?php endif; ?>
     </div>
 
-    <a href="/wedding_hub/admin/dashboard.php" class="login-btn" style="margin-top:30px; display:inline-block;">
+    <a href="/wedding/admin/dashboard.php" class="login-btn" style="margin-top:30px; display:inline-block;">
         Powrót
     </a>
 </div>

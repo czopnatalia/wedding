@@ -9,7 +9,7 @@ $is_index = basename($_SERVER['PHP_SELF']) === 'index.php';
 
 // Jeśli nie ma dostępu i nie jest na stronie głównej (index.php) - wyrzuć do bramki
 if (!$has_access && !$is_index) {
-    header("Location: /wedding_hub/index.php");
+    header("Location: /wedding/index.php");
     exit;
 }
 ?>
@@ -18,10 +18,10 @@ if (!$has_access && !$is_index) {
 <head>
     <meta charset="UTF-8">
     <title>Natalia i Łukasz</title>
-    <base href="/wedding_hub/">
+    <base href="/wedding/">
     <link rel="stylesheet" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/jpeg" href="/wedding_hub/favicon.jpg">
+    <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
 </head>
 <body>
 <div class="site-wrapper" style="display: flex; flex-direction: column; min-height: 100vh;">

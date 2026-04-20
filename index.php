@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Natalia i Łukasz</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/jpeg" href="/wedding_hub/favicon.jpg">
+    <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
     
     <style>
         body {
