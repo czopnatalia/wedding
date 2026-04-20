@@ -3,6 +3,24 @@ include 'includes/header.php';
 ?>
 
 <style>
+
+/* Specyficzne style tylko dla tej strony */
+.rsvp-mobile-wide {
+    max-width: 700px;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+/* Styl dla inputów, żeby nie zoomowały, ale nie psuły nawigacji */
+.rsvp-mobile-wide input[type="text"], 
+.rsvp-mobile-wide select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px !important; /* Blokada zoomu tylko tutaj */
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}    
 .person-block {
     margin-bottom: 35px;
     padding-bottom: 25px;
@@ -82,65 +100,38 @@ include 'includes/header.php';
 
 /* RESPONSYWNOŚĆ - tutaj dzieje się magia na telefonie */
 @media (max-width: 600px) {
+    /* Przywracamy marginesy dla body, żeby nawigacja nie dotykała krawędzi */
     body {
-        padding: 0;
-        margin: 0;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
-    .section-card {
-        margin: 0;          /* Usuwamy marginesy zewnętrzne */
-        width: 100%;        /* Formularz zajmuje całą szerokość ekranu */
-        border-radius: 0;   /* Na pełnym ekranie rogi mogą być proste */
-        padding: 20px 15px; /* Odstęp od krawędzi ekranu wewnątrz */
-        min-height: 100vh;  /* Opcjonalnie: karta zajmuje całą wysokość */
-    }
-
-    /* Powiększamy napisy, żeby były czytelne bez powiększania */
-    h2 {
-        font-size: 1.8rem !important;
-        margin-bottom: 25px;
-    }
-
-    label {
-        font-size: 1.1rem !important; /* Większe etykiety */
-        margin-bottom: 10px;
-    }
-
-    /* Pola tekstowe - klucz do braku zoomowania */
-    input[type="text"], 
-    select {
-        width: 100%;
-        padding: 16px;       /* Bardzo wysokie pola, łatwo kliknąć */
-        font-size: 16px !important; /* To blokuje auto-zoom na iPhone */
-        margin-bottom: 10px;
-        border-radius: 10px;
-        box-sizing: border-box;
-    }
-
-    /* Większe checkboxy diet */
-    .diet-item {
-        padding: 12px 0;    /* Większe odstępy między opcjami */
-        font-size: 1.1rem;
-    }
-
-    .diet-item input[type="checkbox"] {
-        width: 25px;
-        height: 25px;
-    }
-
-    /* Przyciski na cały ekran */
-    .add-person-btn, 
-    .submit-btn {
+    /* Tylko karta RSVP rozciąga się na boki */
+    .rsvp-mobile-wide {
+        margin: 10px 0 !important; /* Mały odstęp góra/dół */
         width: 100% !important;
-        padding: 18px !important;
+        max-width: 100% !important;
+        border-radius: 0 !important; /* Rozciągnięcie do krawędzi */
+        padding: 25px 15px !important;
+    }
+
+    /* Przyciski duże na telefonie */
+    .rsvp-mobile-wide .submit-btn, 
+    .rsvp-mobile-wide .add-person-btn {
+        width: 100% !important;
+        padding: 16px !important;
         font-size: 1.1rem !important;
-        margin-top: 20px;
-        border-radius: 12px;
+    }
+
+    /* Checkboxy - łatwe klikanie */
+    .rsvp-mobile-wide .diet-item input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
     }
 }
 </style>
 
-<div class="section-card" id="rsvp-container">
+<div class="section-card rsvp-mobile-wide" id="rsvp-container">
 
     <h2>Potwierdzenie obecności</h2>
 
