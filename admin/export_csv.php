@@ -18,7 +18,8 @@ $output = fopen('php://output', 'w');
 fputcsv($output, [
     'Imię i nazwisko',
     'Obecność',
-    'Dieta'
+    'Dieta',
+    'Piosenka']
 ], ';'); 
 
 // Dane
@@ -32,7 +33,8 @@ foreach ($guests as $g) {
     fputcsv($output, [
         $g['name'],
         $g['attending'] ? "Obecny" : "Nieobecny",
-        implode(", ", $diets)
+        implode(", ", $diets),
+        $g['song']
     ], ';');
 }
 

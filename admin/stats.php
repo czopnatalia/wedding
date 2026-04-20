@@ -58,6 +58,10 @@ foreach ($rows as $row) {
 
 // Sortujemy listę, żeby zestawy były alfabetycznie
 ksort($diet_summary);
+
+$songs_stmt = $db->query("SELECT name, song FROM guests WHERE attending = 1 AND song IS NOT NULL AND song != ''");
+$songs_list = $songs_stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <style>
@@ -202,7 +206,27 @@ ksort($diet_summary);
             </ul>
         <?php endif; ?>
     </div>
-
+    
+    <h3 style="margin-top:40px;">Lista Piosenek</h3>
+    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; text-align: left;">
+        <?php if (empty($songs_list)): ?>
+            <p>Brak zgłoszonych piosenek.</p>
+        <?php else: ?>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="border-bottom: 1px solid var(--accent);">
+                    <th style="padding: 10px; text-align: left;">Gość</th>
+                    <th style="padding: 10px; text-align: left;">Utwór</th>
+                </tr>
+                <?php foreach ($songs_list as $s): ?>
+                    <tr>
+                        <td style="padding: 10px;"><?= htmlspecialchars($s['name']) ?></td>
+                        <td style="padding: 10px;"><em><?= htmlspecialchars($s['song']) ?></em></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+    </div>
+    
     <a href="/wedding/admin/dashboard.php" class="login-btn" style="margin-top:30px; display:inline-block;">
         Powrót
     </a>

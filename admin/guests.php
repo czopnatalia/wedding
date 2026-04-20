@@ -122,6 +122,7 @@ $diet_counts = [
                     <span id="presenceArrow" style="font-size:14px; opacity:0.6;">▲</span>
                 </th>
                 <th>Dieta</th>
+                <th>Piosenka</th>
             </tr>
         </thead>
 
@@ -155,6 +156,7 @@ $diet_counts = [
                         echo implode(", ", $diets);
                     ?>
                 </td>
+                <td><?= htmlspecialchars($g['song']) ?></td>
             </tr>
 
         <?php endforeach; ?>

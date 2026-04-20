@@ -28,10 +28,9 @@ include 'includes/header.php';
 }
 
 .other-text {
-    margin-left: 28px;
     margin-top: -5px;
     padding: 8px;
-    width: 60%;
+    gap: 10px;
 }
 
 .add-person-btn {
@@ -158,8 +157,8 @@ include 'includes/header.php';
                 </div>
                     
                 <div style="margin-top: 20px;">
-                    <label style="display: block; margin-bottom: 8px; font-size: 0.9rem;">Podaj tytuł piosenki, którą chcesz usłyszeć na weselu</label>
-                    <input type="text" name="piosenka[0]" placeholder="Tytuł i wykonawca" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ddd;">
+                    <label style="margin-bottom: 8px;">Podaj tytuł piosenki, którą chcesz usłyszeć na weselu</label>
+                    <input type="text" name="piosenka[0]" placeholder="Tytuł i wykonawca" style="width: 100%;">
                 </div>
                 
             </div>

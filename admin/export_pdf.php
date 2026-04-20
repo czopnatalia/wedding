@@ -108,6 +108,7 @@ $pdf->Ln(2);
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(70,10, pl('Imie i nazwisko'),1);
 $pdf->Cell(90,10, pl('Dieta'),1);
+$pdf->Cell(80, 10, pl('Piosenka'), 1);
 $pdf->Ln();
 
 $pdf->SetFont('Arial','',11);
@@ -122,6 +123,7 @@ foreach ($guests as $g) {
 
     $pdf->Cell(70,10, pl($g['name']),1);
     $pdf->Cell(90,10, pl(implode(", ", $diets)),1);
+    $pdf->Cell(80, 10, pl($g['song']), 1);
     $pdf->Ln();
 }
 
