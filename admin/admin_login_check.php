@@ -19,10 +19,10 @@ if ($admin && password_verify($password, $admin['password_hash'])) {
 
     $_SESSION['access'] = true;
 
-    header("Location: /wedding_hub/admin/dashboard.php");
+    header("Location: /wedding/admin/dashboard.php");
     exit;
 }
 
 // Jeśli błędne dane → wracamy na logowanie
-header("Location: /wedding_hub/admin/admin_login.php?error=1");
+header("Location: /wedding/admin/admin_login.php?error=1");
 exit;
