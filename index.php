@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         button {
             background: var(--text);
             color: #fff;
-            border: none;
+            border-radius: 4px;
             padding: 12px 45px;
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -161,6 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         button:hover {
             background: var(--accent);
+            
         }
 
         @media (max-width: 850px) {
@@ -178,18 +179,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .split-content { 
                 flex: none;
                 width: 100%;
-                padding: 40px 20px; 
+                padding: 40px 0; 
+                margin: 0;
                 min-height: 60vh;
             }
             .panel {
                 max-width: 100%;
+                margin: 0 auto;
+                box-sizing: border-box;
             }
             h1 { font-size: 2rem; }
             .countdown { 
                 gap: 15px; /* Mniejsze odstępy w liczniku na komórki */
             }
             .time-val { font-size: 1.4rem; }
-            .form-container {
+            .form-container, .form-container form {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
