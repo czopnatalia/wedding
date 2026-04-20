@@ -22,7 +22,6 @@ if (!$has_access && !$is_index) {
     <link rel="stylesheet" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="site-wrapper" style="display: flex; flex-direction: column; min-height: 100vh;">
