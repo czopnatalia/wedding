@@ -95,7 +95,7 @@ include 'includes/header.php';
 
 .info-block p {
     font-size: 1.2rem;
-    line-height: 1.5;
+    line-height: 1.8;
     /* Usunięte uppercase - teraz tekst jest normalny */
     margin: 0;
     letter-spacing: 0.5px;
@@ -219,7 +219,7 @@ include 'includes/header.php';
 <div class="main-panel fade-in-up">
     
     <div class="invitation-header">Zaproszenie</div>
-    <div class="wedding-date-hero">18 września 2026</div>
+    <div class="wedding-date-hero">18 WRZEŚNIA 2026</div>
 
     <p class="intro-text">
         Serdecznie zapraszamy Was na uroczystość zawarcia związku małżeńskiego. 

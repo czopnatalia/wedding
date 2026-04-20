@@ -19,13 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natalia & Łukasz</title>
+    <title>Natalia i Łukasz</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
-    
+    <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
     <style>
         :root {
             --accent: #8c7e6d;
             --text: #1a1a1a; /* Bardziej czarny dla elegancji */
+            --bg-soft: #fcfaf8;
         }
 
         body, html {
@@ -70,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         h1 {
             font-family: "Playfair Display", serif;
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.2rem, 4vw, 3rem);
             font-weight: 400;
             letter-spacing: 0.1em;
             margin: 0 0 10px;
@@ -78,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .date-main {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             letter-spacing: 0.4em;
             text-transform: uppercase;
             margin-bottom: 30px;
@@ -89,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 50px;
             height: 1px;
             background: #000;
-            margin: 40px auto;
+            margin: 50px auto;
             opacity: 0.2;
         }
 
@@ -166,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="split-content">
         <div class="panel">
             <h1>Natalia i Łukasz</h1>
-            <div class="date-main">18 września2026</div>
+            <div class="date-main">18 września 2026</div>
 
             <div class="divider"></div>
 
