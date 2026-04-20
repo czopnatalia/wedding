@@ -28,10 +28,10 @@ if (!$has_access && !$is_index) {
 
 <header class="site-header">
     <div class="site-header-inner">
-        <div class="site-title-panel fade-in-up">
+        <div class="site-title-panel">
             <h1>Natalia i Łukasz</h1>
         </div>
-        <nav class="main-nav fade-in-up" style="animation-delay:0.15s;">
+        <nav class="main-nav">
             <a class="nav-tile" href="home.php">Strona główna</a>
             <a class="nav-tile" href="rsvp.php">Potwierdź obecność</a>
             <a class="nav-tile" href="galeria.php">Galeria zdjęć</a>
