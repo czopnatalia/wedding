@@ -25,7 +25,7 @@ $noResponse = $invited - ($coming + $notComing);
 
 // --- NOWA LOGIKA DIET (GRUPOWANIE) ---
 // Pobieramy wszystkich, którzy przyjdą
-$stmt = $db->query("SELECT diet_gluten_free, diet_vege, diet_vegan, diet_lactose, diet_other FROM guests WHERE attending = 1");
+$stmt = $db->query("SELECT diet_gluten_free, diet_vege, diet_other FROM guests WHERE attending = 1");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $diet_summary = [];
@@ -226,7 +226,7 @@ $songs_list = $songs_stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
         <?php endif; ?>
     </div>
-    
+
     <a href="/wedding/admin/dashboard.php" class="login-btn" style="margin-top:30px; display:inline-block;">
         Powrót
     </a>

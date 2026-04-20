@@ -79,6 +79,7 @@ $pdf->Ln(2);
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(70,10, pl('Imie i nazwisko'),1);
 $pdf->Cell(90,10, pl('Dieta'),1);
+$pdf->Cell(80, 10, pl('Piosenka'), 1);
 $pdf->Ln();
 
 $pdf->SetFont('Arial','',11);
@@ -93,6 +94,7 @@ foreach ($guests as $g) {
 
     $pdf->Cell(70,10, pl($g['name']),1);
     $pdf->Cell(90,10, pl(implode(", ", $diets)),1);
+    $pdf->Cell(80, 10, pl($g['song']), 1);
     $pdf->Ln();
 }
 
@@ -107,8 +109,6 @@ $pdf->Ln(2);
 
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(70,10, pl('Imie i nazwisko'),1);
-$pdf->Cell(90,10, pl('Dieta'),1);
-$pdf->Cell(80, 10, pl('Piosenka'), 1);
 $pdf->Ln();
 
 $pdf->SetFont('Arial','',11);
@@ -116,14 +116,7 @@ $pdf->SetFont('Arial','',11);
 foreach ($guests as $g) {
     if ($g['attending']) continue;
 
-    $diets = [];
-    if ($g['diet_gluten_free']) $diets[] = "Bez glutenu";
-    if ($g['diet_vege']) $diets[] = "Wege";
-    if ($g['diet_other']) $diets[] = $g['diet_other'];
-
     $pdf->Cell(70,10, pl($g['name']),1);
-    $pdf->Cell(90,10, pl(implode(", ", $diets)),1);
-    $pdf->Cell(80, 10, pl($g['song']), 1);
     $pdf->Ln();
 }
 

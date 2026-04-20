@@ -19,7 +19,7 @@ fputcsv($output, [
     'Imię i nazwisko',
     'Obecność',
     'Dieta',
-    'Piosenka']
+    'Piosenka'
 ], ';'); 
 
 // Dane
