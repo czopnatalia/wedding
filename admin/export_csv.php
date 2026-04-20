@@ -1,4 +1,7 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
+
 require_once "../includes/db.php";
 
 // Pobranie danych
@@ -34,7 +37,7 @@ foreach ($guests as $g) {
         $g['name'],
         $g['attending'] ? "Obecny" : "Nieobecny",
         implode(", ", $diets),
-        $g['song']
+        trim((string)($g['song'] ?? ''))
     ], ';');
 }
 
