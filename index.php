@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 40px;
             height: 1px;
             background: var(--accent);
-            margin: 25px auto;
+            margin: 50px auto;
             opacity: 0.5;
         }
 
@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background: transparent;
             color: var(--text);
             border: 1px solid var(--text);
-            padding: 10px 35px;
+            padding: 8px 30px;
             font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.4s;
