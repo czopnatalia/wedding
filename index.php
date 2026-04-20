@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .split-content {
             flex: 1;
             /* Ustawiamy to samo tło co po lewej, aby blur miał co rozmywać */
-            background-image: url('assets/hero.jpg');
+            background-image: url('assets/chmury.webp');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -70,10 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             top: 0; left: 0; right: 0; bottom: 0;
             
             /* Twoja zmiana: biały z alpha 0.3 */
-            background: rgba(255, 255, 255, 0.3); 
+            background: rgba(255, 255, 255, 0.5); 
             
             /* Twoje rozmycie 10px (możesz zwiększyć do 20px dla bardziej "chmurowego" efektu) */
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(15px);
             
             z-index: 0;
