@@ -139,7 +139,7 @@ include 'includes/header.php';
 }
 
 .rsvp-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 30px;
 }
 
@@ -151,7 +151,7 @@ include 'includes/header.php';
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-size: 1.2rem;
+    font-size: 0.85rem;
     transition: all 0.4s ease;
     margin-bottom: 50px;
 }
@@ -177,7 +177,7 @@ include 'includes/header.php';
 
 .contact-link span {
     display: block;
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 5px;
