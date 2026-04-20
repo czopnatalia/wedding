@@ -20,7 +20,7 @@ include 'includes/header.php';
 /* TYPOGRAFIA NAGŁÓWKÓW */
 .invitation-header {
     font-family: "Playfair Display", serif;
-    font-size: 3.5rem; 
+    font-size: 3rem; 
     text-transform: uppercase;
     letter-spacing: 8px;
     text-align: center;
@@ -30,7 +30,7 @@ include 'includes/header.php';
 
 .wedding-date-hero {
     font-family: "Playfair Display", serif;
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 40px;
     display: block;
@@ -78,7 +78,7 @@ include 'includes/header.php';
 
 .category-label {
     font-family: "Playfair Display", serif;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     text-transform: uppercase; /* Drukowane litery dla etykiet ŚLUB / WESELE */
     height: 120px;
     display: flex;
@@ -94,7 +94,7 @@ include 'includes/header.php';
 }
 
 .info-block p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.5;
     /* Usunięte uppercase - teraz tekst jest normalny */
     margin: 0;
@@ -139,7 +139,7 @@ include 'includes/header.php';
 }
 
 .rsvp-text {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     margin-bottom: 30px;
 }
 
@@ -151,7 +151,7 @@ include 'includes/header.php';
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-size: 0.85rem;
+    font-size: 1.2rem;
     transition: all 0.4s ease;
     margin-bottom: 50px;
 }
@@ -238,7 +238,7 @@ include 'includes/header.php';
         <div class="details-right">
             <div class="info-block">
                 <p>Ceremonia zaślubin odbędzie się</p>
-                <p>Dnia 18 września 2026 o godzinie 13.00</p>
+                <p>dnia 18 września 2026 o godzinie 13.00</p>
                 <p>w Parafi św. Jana Pawła II w Nowym Sączu.</p>
             </div>
             <div class="info-block">
