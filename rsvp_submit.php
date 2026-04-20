@@ -9,17 +9,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $code = "RSVP";
 
-// Pobieramy dane z formularza
-$imiona = $_POST['imie'];
-$nazwiska = $_POST['nazwisko'];
-$obecnosci = $_POST['obecnosc'];
+// Pobieramy główne dane z formularza
+$imiona = $_POST['imie'] ?? [];
+$nazwiska = $_POST['nazwisko'] ?? [];
+$obecnosci = $_POST['obecnosc'] ?? [];
 
+// Pobieramy dane o dietach
 $d_gluten = $_POST['dieta_gluten'] ?? [];
 $d_vege = $_POST['dieta_vege'] ?? [];
-$d_vegan = $_POST['dieta_vegan'] ?? [];
-$d_lactose = $_POST['dieta_lactose'] ?? [];
 $d_other = $_POST['dieta_other_text'] ?? [];
-$d_none = $_POST['dieta_choice'] ?? [];
+
+// Pobieramy piosenki
+$piosenki = $_POST['piosenka'] ?? [];
 
 $duplikaty = []; // lista osób, które już istnieją
 
@@ -30,23 +31,29 @@ for ($i = 0; $i < count($imiona); $i++) {
     $name = trim($imiona[$i] . " " . $nazwiska[$i]);
     $attending = ($obecnosci[$i] === "tak") ? 1 : 0;
 
-    // Inicjalizacja zmiennych diety dla KAŻDEJ osoby osobno
+    // Inicjalizacja zmiennych dla KAŻDEJ osoby osobno
     $gluten = 0;
     $vege = 0;
-    $vegan = 0;
-    $lactose = 0;
-    $other = null;
+    $other_diet = null;
+    $song = null;
 
     if ($attending) {
-        // Sprawdzamy, czy dana dieta została zaznaczona dla osoby o indeksie $i
+        // Diety (tylko te, które zostawiliśmy)
         if (isset($d_gluten[$i])) $gluten = 1;
         if (isset($d_vege[$i]))   $vege = 1;
-        if (isset($d_vegan[$i]))  $vegan = 1;
-        if (isset($d_lactose[$i])) $lactose = 1;
-        if (!empty($d_other[$i])) $other = $d_other[$i];
+        
+        // Pole "Inna dieta"
+        if (!empty($d_other[$i])) {
+            $other_diet = trim($d_other[$i]);
+        }
+
+        // Piosenka
+        if (!empty($piosenki[$i])) {
+            $song = trim($piosenki[$i]);
+        }
     }
 
-    // SPRAWDZENIE DUPLIKATU
+    // SPRAWDZENIE DUPLIKATU (czy osoba o tym imieniu i nazwisku już jest w bazie)
     $check = $db->prepare("SELECT id FROM guests WHERE name = ?");
     $check->execute([$name]);
 
@@ -56,10 +63,12 @@ for ($i = 0; $i < count($imiona); $i++) {
     }
 
     // ZAPIS DO BAZY
+    // Zakładamy, że kolumna w bazie nazywa się 'song'. 
+    // Jeśli jeszcze jej nie masz, wykonaj w bazie: ALTER TABLE guests ADD COLUMN song VARCHAR(255) DEFAULT NULL;
     $insert = $db->prepare("
         INSERT INTO guests 
-        (code, name, attending, diet_gluten_free, diet_vege, diet_vegan, diet_lactose, diet_other, is_companion)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        (code, name, attending, diet_gluten_free, diet_vege, diet_other, song, is_companion)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     ");
 
     $insert->execute([
@@ -68,9 +77,8 @@ for ($i = 0; $i < count($imiona); $i++) {
         $attending,
         $gluten,
         $vege,
-        $vegan,
-        $lactose,
-        $other,
+        $other_diet,
+        $song,
         ($i === 0 ? 0 : 1) // Pierwsza osoba to gość główny (0), reszta to towarzyszące (1)
     ]);
 }

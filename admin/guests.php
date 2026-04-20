@@ -16,8 +16,6 @@ $total_present = 0;
 $diet_counts = [
     "Bez glutenu" => 0,
     "Wege" => 0,
-    "Wegańska" => 0,
-    "Bez laktozy" => 0,
     "Inne" => 0
 ];
 ?>
@@ -139,8 +137,6 @@ $diet_counts = [
             // Zliczamy diety
             if ($g['diet_gluten_free']) $diet_counts["Bez glutenu"]++;
             if ($g['diet_vege']) $diet_counts["Wege"]++;
-            if ($g['diet_vegan']) $diet_counts["Wegańska"]++;
-            if ($g['diet_lactose']) $diet_counts["Bez laktozy"]++;
             if ($g['diet_other']) $diet_counts["Inne"]++;
 
             $row_class = $g['attending'] ? "present" : "absent";
@@ -155,8 +151,6 @@ $diet_counts = [
                         $diets = [];
                         if ($g['diet_gluten_free']) $diets[] = "Bez glutenu";
                         if ($g['diet_vege']) $diets[] = "Wege";
-                        if ($g['diet_vegan']) $diets[] = "Wegańska";
-                        if ($g['diet_lactose']) $diets[] = "Bez laktozy";
                         if ($g['diet_other']) $diets[] = htmlspecialchars($g['diet_other']);
                         echo implode(", ", $diets);
                     ?>

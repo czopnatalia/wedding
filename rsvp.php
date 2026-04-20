@@ -71,6 +71,10 @@ include 'includes/header.php';
     color: var(--accent);
     text-align: center;
 }
+
+input[type="text"], input[type="password"], button {
+    border-radius: 6px !important;
+}
 </style>
 
 <div class="section-card" id="rsvp-container">
@@ -134,37 +138,25 @@ include 'includes/header.php';
 
                     <label>Wymagania co do diety:</label>
 
-                    <div class="diet-options">
-
+                    <div class="diet-options" style="display:none;">
+                        <p style="margin-bottom: 10px; font-size: 0.9rem;">Wybierz dietę:</p>
                         <label class="diet-item">
-                            <input type="checkbox" name="dieta_gluten[0]" value="bezglutenowa">
-                            <span>Bezglutenowa</span>
+                            <input type="checkbox" name="dieta_gluten[0]"> Bezglutenowa
                         </label>
-
                         <label class="diet-item">
-                            <input type="checkbox" name="dieta_vege[0]" value="wegetariańska">
-                            <span>Wegetariańska</span>
+                            <input type="checkbox" name="dieta_vege[0]"> Wegetariańska
                         </label>
-
                         <label class="diet-item">
-                            <input type="checkbox" name="dieta_vegan[0]" value="wegańska">
-                            <span>Wegańska</span>
+                            <input type="checkbox" name="dieta_other[0]" class="other-check"> Inna (wpisz jaka)
                         </label>
-
-                        <label class="diet-item">
-                            <input type="checkbox" name="dieta_lactose[0]" value="bez laktozy">
-                            <span>Bez laktozy</span>
-                        </label>
-
-                        <label class="diet-item">
-                            <input type="checkbox" class="other-check">
-                            <span>Inne:</span>
-                        </label>
-
-                        <input type="text" name="dieta_other_text[0]" class="other-text" placeholder="Wpisz inne wymagania" style="display:none;">
-
+                        <input type="text" name="dieta_other_text[0]" class="other-text" style="display:none;" placeholder="Jaka dieta?">
                     </div>
 
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-size: 0.9rem;">Twoja piosenka (którą chcesz usłyszeć na weselu):</label>
+                    <input type="text" name="piosenka[0]" placeholder="Tytuł i wykonawca" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ddd;">
                 </div>
 
             </div>

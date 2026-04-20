@@ -32,8 +32,6 @@ $total_absent = 0;
 $diet_counts = [
     "Bez glutenu" => 0,
     "Wege" => 0,
-    "Weganska" => 0,
-    "Bez laktozy" => 0,
     "Inne" => 0
 ];
 
@@ -44,8 +42,6 @@ foreach ($guests as $g) {
 
     if ($g['diet_gluten_free']) $diet_counts["Bez glutenu"]++;
     if ($g['diet_vege']) $diet_counts["Wege"]++;
-    if ($g['diet_vegan']) $diet_counts["Weganska"]++;
-    if ($g['diet_lactose']) $diet_counts["Bez laktozy"]++;
     if ($g['diet_other']) $diet_counts["Inne"]++;
 }
 
@@ -93,8 +89,6 @@ foreach ($guests as $g) {
     $diets = [];
     if ($g['diet_gluten_free']) $diets[] = "Bez glutenu";
     if ($g['diet_vege']) $diets[] = "Wege";
-    if ($g['diet_vegan']) $diets[] = "Weganska";
-    if ($g['diet_lactose']) $diets[] = "Bez laktozy";
     if ($g['diet_other']) $diets[] = $g['diet_other'];
 
     $pdf->Cell(70,10, pl($g['name']),1);
@@ -124,8 +118,6 @@ foreach ($guests as $g) {
     $diets = [];
     if ($g['diet_gluten_free']) $diets[] = "Bez glutenu";
     if ($g['diet_vege']) $diets[] = "Wege";
-    if ($g['diet_vegan']) $diets[] = "Weganska";
-    if ($g['diet_lactose']) $diets[] = "Bez laktozy";
     if ($g['diet_other']) $diets[] = $g['diet_other'];
 
     $pdf->Cell(70,10, pl($g['name']),1);

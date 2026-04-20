@@ -35,8 +35,7 @@ foreach ($rows as $row) {
 
     if ($row['diet_gluten_free']) $guest_diets[] = "Bez glutenu";
     if ($row['diet_vege'])        $guest_diets[] = "Wege";
-    if ($row['diet_vegan'])       $guest_diets[] = "Wegańska";
-    if ($row['diet_lactose'])     $guest_diets[] = "Bez laktozy";
+
     
     if (!empty($row['diet_other'])) {
         $guest_diets[] = htmlspecialchars($row['diet_other']);
