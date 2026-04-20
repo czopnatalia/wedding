@@ -70,10 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             top: 0; left: 0; right: 0; bottom: 0;
             
             /* Twoja zmiana: biały z alpha 0.3 */
-            background: rgba(255, 255, 255, 0.5); 
+            background: rgba(255, 255, 255, 0.3); 
             
             /* Twoje rozmycie 10px (możesz zwiększyć do 20px dla bardziej "chmurowego" efektu) */
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             
             z-index: 0;
