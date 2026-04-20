@@ -189,7 +189,7 @@ $songs_list = $songs_stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <h3 style="margin-top:50px;">Zapotrzebowanie dla kuchni (gotowe dania):</h3>
+    <h3 style="margin-top:50px;">Zapotrzebowanie na diety specjalne:</h3>
     <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
         <?php if (empty($diet_summary)): ?>
             <p>Brak potwierdzonych gości z dietami.</p>

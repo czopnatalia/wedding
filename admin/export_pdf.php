@@ -4,11 +4,12 @@ require_once "fpdf/fpdf.php";
 
 // Zamiana polskich znaków na najbliższe odpowiedniki
 function pl($text) {
+    return iconv('UTF-8', 'ISO-8859-2', (string)$text);
     $map = [
         'ą'=>'a','ć'=>'c','ę'=>'e','ł'=>'l','ń'=>'n','ó'=>'o','ś'=>'s','ż'=>'z','ź'=>'z',
         'Ą'=>'A','Ć'=>'C','Ę'=>'E','Ł'=>'L','Ń'=>'N','Ó'=>'O','Ś'=>'S','Ż'=>'Z','Ź'=>'Z'
     ];
-    return strtr($text, $map);
+    return strtr((string)$text, $map);
 }
 
 $pdf = new FPDF();
