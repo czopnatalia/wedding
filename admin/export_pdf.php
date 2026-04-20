@@ -78,9 +78,9 @@ $pdf->Cell(0,10, pl('Goscie obecni'),0,1);
 $pdf->Ln(2);
 
 $pdf->SetFont('Arial','B',12);
-$pdf->Cell(70,10, pl('Imie i nazwisko'),1);
-$pdf->Cell(90,10, pl('Dieta'),1);
-$pdf->Cell(80, 10, pl('Piosenka'), 1);
+$pdf->Cell(50,10, pl('Imie i nazwisko'),1);
+$pdf->Cell(50,10, pl('Dieta'),1);
+$pdf->Cell(50, 10, pl('Piosenka'), 1);
 $pdf->Ln();
 
 $pdf->SetFont('Arial','',11);
@@ -93,9 +93,9 @@ foreach ($guests as $g) {
     if ($g['diet_vege']) $diets[] = "Wegetariańska";
     if ($g['diet_other']) $diets[] = $g['diet_other'];
 
-    $pdf->Cell(70,10, pl($g['name']),1);
-    $pdf->Cell(90,10, pl(implode(", ", $diets)),1);
-    $pdf->Cell(80, 10, pl($g['song']), 1);
+    $pdf->Cell(50,10, pl($g['name']),1);
+    $pdf->Cell(50,10, pl(implode(", ", $diets)),1);
+    $pdf->Cell(50, 10, pl($g['song']), 1);
     $pdf->Ln();
 }
 
@@ -109,7 +109,7 @@ $pdf->Cell(0,10, pl('Goscie nieobecni'),0,1);
 $pdf->Ln(2);
 
 $pdf->SetFont('Arial','B',12);
-$pdf->Cell(70,10, pl('Imie i nazwisko'),1);
+$pdf->Cell(50,10, pl('Imie i nazwisko'),1);
 $pdf->Ln();
 
 $pdf->SetFont('Arial','',11);
@@ -117,7 +117,7 @@ $pdf->SetFont('Arial','',11);
 foreach ($guests as $g) {
     if ($g['attending']) continue;
 
-    $pdf->Cell(70,10, pl($g['name']),1);
+    $pdf->Cell(50,10, pl($g['name']),1);
     $pdf->Ln();
 }
 
