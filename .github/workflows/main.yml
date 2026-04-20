@@ -19,4 +19,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         # Opcjonalnie: ścieżka na serwerze (np. /twojadomena.com/ )
-        server-dir: /wedding_hub/
+        server-dir: /wedding/
