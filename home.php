@@ -44,7 +44,9 @@ include 'includes/header.php';
     max-width: 650px;
     margin: 0 auto 80px;
     font-weight: 300;
-    hyphens: auto; /* Dzielenie wyrazów dla lepszego efektu justowania */
+    hyphens: none;               /* Całkowicie wyłącza dzielenie wyrazów */
+    word-break: keep-all;        /* Zapobiega łamaniu wyrazów w połowie */
+    text-justify: inter-word;    /* Sprawia, że odstępy są regulowane tylko między słowami, a nie literami */
 }
 
 /* UKŁAD SZCZEGÓŁÓW */
