@@ -342,13 +342,6 @@ footer {
     filter: brightness(0) invert(0);
 }
 
-/* ====== WYŁĄCZENIE HOVERA NAGŁÓWKA ====== */
-.site-title-panel:hover {
-    transform: none !important;
-    box-shadow: 0 14px 40px rgba(0,0,0,0.6) !important;
-    background: rgba(255,255,255,0.12) !important;
-}
-
 
 
 /* ====== TYLKO KAFELKI MENU MAJĄ HOVER ====== */
