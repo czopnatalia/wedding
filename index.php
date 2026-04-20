@@ -37,10 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-family: "Inter", sans-serif;
         }
 
-        .split-container {
+        .split-content {
+            flex: 1;
+            /* Ustawiamy to samo tło co po lewej */
+            background-image: url('assets/hero.jpg'); 
+            background-size: cover;
+            background-position: center;
             display: flex;
-            height: 100vh;
-            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
         }
 
         /* LEWA STRONA: ZDJĘCIE */
@@ -62,11 +69,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding: 40px;
         }
 
+        .split-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* To nakłada biały filtr i rozmywa zdjęcie pod spodem */
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(30px); /* Siła rozmazania chmur */
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 0;
+        }
+
         .panel {
             max-width: 450px;
             width: 100%;
             text-align: center;
             color: var(--text);
+            position: relative; /* Wyciąga treść nad warstwę blur */
+            z-index: 1;
         }
 
         h1 {
