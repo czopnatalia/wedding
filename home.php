@@ -214,6 +214,193 @@ include 'includes/header.php';
     .map-btn-box { height: auto; }
     .intro-text { text-align: center; } /* Na mobile lepiej wygląda wyśrodkowane */
 }
+</style><style>
+/* PANEL GŁÓWNY */
+.main-panel {
+    width: 95%;
+    max-width: 850px;
+    margin: 60px auto 100px;
+    padding: 80px 50px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-main);
+}
+
+/* TYPOGRAFIA NAGŁÓWKÓW */
+.invitation-header {
+    font-family: "Playfair Display", serif;
+    font-size: 3rem; 
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.wedding-date-hero {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    display: block;
+    color: var(--text-main);
+}
+
+/* UJEDNOLICONY TEKST GŁÓWNY (Serdecznie... oraz szczegóły) */
+.intro-text, .info-block p {
+    font-size: 1.1rem; /* Spójna wielkość dla obu sekcji */
+    line-height: 1.5;   /* Zmniejszona interlinia dla lepszej spójności */
+    color: var(--text-main);
+    margin: 0;
+}
+
+.intro-text {
+    text-align: justify;
+    max-width: 650px;
+    margin: 0 auto 60px; /* Zmniejszony odstęp pod tekstem powitalnym */
+    font-weight: 300;
+    hyphens: none;
+    word-break: keep-all;
+    text-justify: inter-word;
+}
+
+/* UKŁAD SZCZEGÓŁÓW */
+.wedding-details-container {
+    display: grid;
+    grid-template-columns: 160px 1px 1fr 60px;
+    gap: 0;
+    margin-bottom: 60px;
+}
+
+.vertical-line {
+    background: rgba(74, 63, 53, 0.2);
+    height: 100%;
+}
+
+.details-left {
+    padding-right: 40px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.details-right {
+    padding-left: 40px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-label {
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    height: 100px; /* Zmniejszone z 120px, aby pasowało do mniejszej czcionki */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.info-block {
+    height: 100px; /* Zmniejszone z 120px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* PINEZKI */
+.map-btn-box {
+    height: 100px; /* Zsynchronizowane z wysokością bloków tekstu */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-btn-box img {
+    width: 26px;
+    height: 26px;
+    transition: transform 0.3s ease;
+}
+
+.map-btn-box img:hover {
+    transform: scale(1.2);
+}
+
+/* DOLNA SEKCJA */
+.bottom-section {
+    text-align: center;
+    border-top: 1px solid rgba(74, 63, 53, 0.1);
+    padding-top: 40px;
+}
+
+.rsvp-text {
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+.btn-rsvp {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    transition: all 0.4s ease;
+    margin-bottom: 40px;
+}
+
+.btn-rsvp:hover {
+    background: var(--text-main);
+    color: #fff !important;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.contact-link {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contact-link span {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 3px;
+    opacity: 0.6;
+}
+
+.contact-link strong {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.contact-link:hover {
+    transform: scale(1.05);
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .wedding-details-container { grid-template-columns: 1fr; }
+    .vertical-line, .details-left { display: none; }
+    .details-right { padding-left: 0; text-align: center; }
+    .invitation-header { font-size: 2.5rem; }
+    .wedding-date-hero { font-size: 1.8rem; }
+    .map-col { flex-direction: row; justify-content: center; gap: 30px; margin-top: 20px; }
+    .map-btn-box { height: auto; }
+    .intro-text { text-align: center; }
+}
 </style>
 
 <div class="main-panel fade-in-up">
