@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         :root {
             --accent: #8c7e6d;
-            --text: #1a1a1a;
+            --text: #4a3f35;
         }
 
         body, html {
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             top: 0; left: 0; right: 0; bottom: 0;
             
             /* Twoja zmiana: biały z alpha 0.3 */
-            background: rgba(255, 255, 255, 0.3); 
+            background: rgba(255, 255, 255, 0.2); 
             
             /* Twoje rozmycie 10px (możesz zwiększyć do 20px dla bardziej "chmurowego" efektu) */
             backdrop-filter: blur(15px);
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             max-width: 450px;
             width: 100%;
             text-align: center;
-            color: var(--text);
+            color: var(--text) !important;
             position: relative;
             z-index: 1; /* Musi być wyżej niż ::before */
         }
@@ -97,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             letter-spacing: 0.1em;
             margin: 0 0 10px;
             text-transform: uppercase;
+            color: var(--text);
         }
 
         .date-main {
@@ -105,26 +106,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-transform: uppercase;
             margin-bottom: 30px;
             font-weight: 300;
+            color: var(--text);
         }
 
         .divider {
             width: 50px;
             height: 1px;
-            background: #000;
             margin: 50px auto;
             opacity: 0.2;
+            background: var(--text);
         }
 
         /* Styl dla pól licznika */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 35px;
             margin-bottom: 50px;
         }
 
-        .time-val { font-size: 1.8rem; font-weight: 300; display: block; }
-        .time-label { font-size: 0.65rem; text-transform: uppercase; opacity: 0.5; }
+        .time-val { font-size: 1.8rem; font-weight: 300; display: block; color: var(--text);}
+        .time-label { font-size: 0.65rem; text-transform: uppercase; opacity: 0.5; color: var(--text);}
 
         /* Styl pola hasła - bardziej subtelny */
         input[type="password"] {
@@ -132,7 +134,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding: 12px 0;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(0,0,0,0.2);
+            color: var(--text);
+            border-bottom: 1px solid rgba(74, 63, 53, 0.3);
             font-size: 1rem;
             margin-bottom: 30px;
             outline: none;
@@ -140,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         button {
-            background: #1a1a1a;
+            background: var(--text);
             color: #fff;
             border: none;
             padding: 12px 45px;
