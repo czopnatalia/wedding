@@ -160,7 +160,7 @@ include 'includes/header.php';
                         <label style="margin-bottom: 8px;">Podaj tytuł piosenki, którą chcesz usłyszeć na weselu</label>
                         <input type="text" name="piosenka[0]" placeholder="Tytuł i wykonawca" style="width: 100%;">
                     </div>
-    </div>
+                </div>
             </div>
 
         </div>
