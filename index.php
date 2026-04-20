@@ -182,6 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="panel">
     <h1>Natalia i Łukasz</h1>
+    <div class="date">18 września 2026</div>
     <div class="date">Do ślubu pozostało:</div>
 
     <div class="countdown">
