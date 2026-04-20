@@ -70,6 +70,74 @@ include 'includes/header.php';
     color: var(--accent);
     text-align: center;
 }
+
+.section-card {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.15); /* Twój styl glassmorphism */
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+/* RESPONSYWNOŚĆ - tutaj dzieje się magia na telefonie */
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .section-card {
+        margin: 0;          /* Usuwamy marginesy zewnętrzne */
+        width: 100%;        /* Formularz zajmuje całą szerokość ekranu */
+        border-radius: 0;   /* Na pełnym ekranie rogi mogą być proste */
+        padding: 20px 15px; /* Odstęp od krawędzi ekranu wewnątrz */
+        min-height: 100vh;  /* Opcjonalnie: karta zajmuje całą wysokość */
+    }
+
+    /* Powiększamy napisy, żeby były czytelne bez powiększania */
+    h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 25px;
+    }
+
+    label {
+        font-size: 1.1rem !important; /* Większe etykiety */
+        margin-bottom: 10px;
+    }
+
+    /* Pola tekstowe - klucz do braku zoomowania */
+    input[type="text"], 
+    select {
+        width: 100%;
+        padding: 16px;       /* Bardzo wysokie pola, łatwo kliknąć */
+        font-size: 16px !important; /* To blokuje auto-zoom na iPhone */
+        margin-bottom: 10px;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+    /* Większe checkboxy diet */
+    .diet-item {
+        padding: 12px 0;    /* Większe odstępy między opcjami */
+        font-size: 1.1rem;
+    }
+
+    .diet-item input[type="checkbox"] {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* Przyciski na cały ekran */
+    .add-person-btn, 
+    .submit-btn {
+        width: 100% !important;
+        padding: 18px !important;
+        font-size: 1.1rem !important;
+        margin-top: 20px;
+        border-radius: 12px;
+    }
+}
 </style>
 
 <div class="section-card" id="rsvp-container">
