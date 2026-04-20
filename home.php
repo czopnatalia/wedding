@@ -239,7 +239,7 @@ include 'includes/header.php';
             <div class="info-block">
                 <p>Ceremonia zaślubin odbędzie się</p>
                 <p>dnia 18 września 2026 o godzinie 13.00</p>
-                <p>w Parafi św. Jana Pawła II w Nowym Sączu.</p>
+                <p>w Parafii św. Jana Pawła II w Nowym Sączu.</p>
             </div>
             <div class="info-block">
                 <p>Przyjęcie weselne odbędzie się</p>
