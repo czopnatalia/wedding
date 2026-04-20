@@ -20,7 +20,7 @@ include 'includes/header.php';
 /* TYPOGRAFIA NAGŁÓWKÓW */
 .invitation-header {
     font-family: "Playfair Display", serif;
-    font-size: 3.5rem; /* Powiększona czcionka */
+    font-size: 3.5rem; 
     text-transform: uppercase;
     letter-spacing: 8px;
     text-align: center;
@@ -30,7 +30,7 @@ include 'includes/header.php';
 
 .wedding-date-hero {
     font-family: "Playfair Display", serif;
-    font-size: 2.2rem; /* Taka sama czcionka jak Zaproszenie */
+    font-size: 2.2rem;
     text-align: center;
     margin-bottom: 40px;
     display: block;
@@ -39,17 +39,17 @@ include 'includes/header.php';
 
 .intro-text {
     font-size: 1.2rem;
-    line-height: 1.7;
-    text-align: center;
+    line-height: 1.8;
+    text-align: justify; /* Wyjustowanie tekstu */
     max-width: 650px;
     margin: 0 auto 80px;
     font-weight: 300;
+    hyphens: auto; /* Dzielenie wyrazów dla lepszego efektu justowania */
 }
 
-/* UKŁAD SZCZEGÓŁÓW Z PIONOWĄ KRESKĄ */
+/* UKŁAD SZCZEGÓŁÓW */
 .wedding-details-container {
     display: grid;
-    /* Etykiety (lewa) | Kreska | Treść (prawa) | Pinezki */
     grid-template-columns: 160px 1px 1fr 60px;
     gap: 0;
     margin-bottom: 80px;
@@ -77,7 +77,8 @@ include 'includes/header.php';
 .category-label {
     font-family: "Playfair Display", serif;
     font-size: 1.8rem;
-    height: 120px; /* Dopasowane do wysokości info-block */
+    text-transform: uppercase; /* Drukowane litery dla etykiet ŚLUB / WESELE */
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -93,9 +94,9 @@ include 'includes/header.php';
 .info-block p {
     font-size: 1.1rem;
     line-height: 1.5;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    /* Usunięte uppercase - teraz tekst jest normalny */
     margin: 0;
+    letter-spacing: 0.5px;
 }
 
 .info-block span {
@@ -128,7 +129,7 @@ include 'includes/header.php';
     transform: scale(1.2);
 }
 
-/* DOLNA SEKCJA: RSVP I KONTAKT */
+/* DOLNA SEKCJA */
 .bottom-section {
     text-align: center;
     border-top: 1px solid rgba(74, 63, 53, 0.1);
@@ -138,7 +139,6 @@ include 'includes/header.php';
 .rsvp-text {
     font-size: 1.15rem;
     margin-bottom: 30px;
-    font-style: normal; /* Wyłączony kursywa (niepochyły) */
 }
 
 .btn-rsvp {
@@ -159,6 +159,7 @@ include 'includes/header.php';
     color: #fff !important;
 }
 
+/* KONTAKT Z EFEKTEM HOVER */
 .contact-links {
     display: flex;
     justify-content: center;
@@ -169,6 +170,7 @@ include 'includes/header.php';
     text-decoration: none;
     color: inherit;
     text-align: center;
+    transition: all 0.3s ease; /* Płynne przejście dla efektu hover */
 }
 
 .contact-link span {
@@ -178,11 +180,23 @@ include 'includes/header.php';
     letter-spacing: 2px;
     margin-bottom: 5px;
     opacity: 0.6;
+    transition: color 0.3s ease;
 }
 
 .contact-link strong {
     font-size: 1.2rem;
     font-weight: 400;
+}
+
+/* EFEKT HOVER DLA NUMERÓW TELEFONÓW */
+.contact-link:hover {
+    transform: scale(1.08); /* Delikatne powiększenie */
+    color: var(--accent); /* Zmiana koloru na akcentowy */
+}
+
+.contact-link:hover span {
+    color: var(--accent);
+    opacity: 1;
 }
 
 /* RESPONSIVE */
@@ -196,6 +210,7 @@ include 'includes/header.php';
     .wedding-date-hero { font-size: 1.8rem; }
     .map-col { flex-direction: row; justify-content: center; gap: 30px; margin-top: 20px; }
     .map-btn-box { height: auto; }
+    .intro-text { text-align: center; } /* Na mobile lepiej wygląda wyśrodkowane */
 }
 </style>
 
@@ -212,8 +227,8 @@ include 'includes/header.php';
     <div class="wedding-details-container">
         
         <div class="details-left">
-            <div class="category-label">Ślub</div>
-            <div class="category-label">Wesele</div>
+            <div class="category-label">ŚLUB</div>
+            <div class="category-label">WESELE</div>
         </div>
 
         <div class="vertical-line"></div>
@@ -248,7 +263,7 @@ include 'includes/header.php';
 
     <div class="bottom-section">
         <p class="rsvp-text">
-            Prosimy o potwierdzenie obecności do dnia 15 sierpnia 2026 w poniższym formularzu:
+            Prosimy o potwierdzenie obecności do dnia 15 sierpnia 2026 w poniższym formularzu
         </p>
 
         <a href="rsvp.php" class="btn-rsvp">Potwierdzam obecność</a>
