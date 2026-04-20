@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: 0; padding: 0; height: 100%;
             width: 100%;
             font-family: "Inter", sans-serif;
-            overflow-x: hidden;
         }
 
         .split-container {
@@ -40,9 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             height: 100vh;
             width: 100%;
             overflow-x: hidden;
-            justify-content: center; /* Środek w poziomie */
-            align-items: center;     /* Środek w pionie */
-            padding: 20px;
         }
 
         /* LEWA STRONA: ZDJĘCIE OSTRE */
