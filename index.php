@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: 0; padding: 0; height: 100%;
             width: 100%;
             font-family: "Inter", sans-serif;
+            overflow-x: hidden;
         }
 
         .split-container {
@@ -39,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             height: 100vh;
             width: 100%;
             overflow-x: hidden;
+            justify-content: center; /* Środek w poziomie */
+            align-items: center;     /* Środek w pionie */
+            padding: 20px;
         }
 
         /* LEWA STRONA: ZDJĘCIE OSTRE */
@@ -82,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         /* TREŚĆ NAD SZKŁEM */
         .panel {
-            max-width: 450px;
+            max-width: 400px;
             width: 100%;
             text-align: center;
             color: var(--text) !important;
@@ -178,11 +182,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .split-content { 
                 flex: none;
                 width: 100%;
-                padding: 40px 20px; 
+                padding: 40px 0; 
                 min-height: 60vh;
             }
             .panel {
-                max-width: 100%;
+                max-width: 90%;
             }
             h1 { font-size: 2rem; }
             .countdown { 
