@@ -25,145 +25,170 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         :root {
             --accent: #8c7e6d;
-            --text: #1a1a1a;
+            --text: #4a3f35;
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
+            margin: 0; padding: 0; height: 100%;
             width: 100%;
-            background: #f8f8f8;
-            font-family: 'Inter', sans-serif;
-            /* Usunięto overflow: hidden, aby na telefonie dało się przewijać w dół do przycisku */
+            font-family: "Inter", sans-serif;
         }
 
         .split-container {
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
             width: 100%;
-            overflow-x: hidden; /* Blokuje przesuwanie na boki */
+            overflow-x: hidden;
         }
 
-        /* LEWA STRONA: ZDJĘCIE */
+        /* LEWA STRONA: ZDJĘCIE OSTRE */
         .split-image {
             flex: 1;
             background-image: url('assets/hero.jpg'); 
             background-size: cover;
             background-position: center;
-            position: relative;
+            background-repeat: no-repeat;
         }
 
-        /* PRAWA STRONA: TREŚĆ */
+        /* PRAWA STRONA: EFEKT SZRONIONEGO SZKŁA */
         .split-content {
             flex: 1;
-            background: #ffffff;
+            /* Ustawiamy to samo tło co po lewej, aby blur miał co rozmywać */
+            background-image: url('assets/chmury.webp');
+            background-size: cover;
+            background-position: center;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 40px;
             position: relative;
         }
 
-        /* PANEL Z EFEKTEM SZKŁA */
-        .panel {
-            width: 100%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            text-align: center;
-            /* Usunięto sztywne ramki i cienie dla lekkości */
+        /* WARSTWA "SZKŁA" - To tutaj dzieje się magia Twojego CSS */
+        .split-content::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            
+            /* Twoja zmiana: biały z alpha 0.3 */
+            background: rgba(255, 255, 255, 0.2); 
+            
+            /* Twoje rozmycie 10px (możesz zwiększyć do 20px dla bardziej "chmurowego" efektu) */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            
+            z-index: 0;
         }
 
+        /* TREŚĆ NAD SZKŁEM */
+        .panel {
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            color: var(--text) !important;
+            position: relative;
+            z-index: 1; /* Musi być wyżej niż ::before */
+        }
+
+        /* Stylizacja nagłówka wewnątrz panelu, aby pasowała do reszty */
         h1 {
             font-family: "Playfair Display", serif;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
+            font-size: clamp(2.2rem, 4vw, 3rem);
             font-weight: 400;
-            margin-bottom: 30px;
+            letter-spacing: 0.1em;
+            margin: 0 0 10px;
+            text-transform: uppercase;
+            color: var(--text);
         }
 
-        /* LICZNIK */
+        .date-main {
+            font-size: 1.1rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: var(--text);
+        }
+
+        .divider {
+            width: 100px;
+            height: 1px;
+            margin: 50px auto;
+            opacity: 0.2;
+            background: var(--text);
+        }
+
+        /* Styl dla pól licznika */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 35px;
+            margin-bottom: 50px;
         }
 
-        .time-unit { display: flex; flex-direction: column; align-items: center; }
-        .time-val { font-family: "Playfair Display", serif; font-size: 2rem; color: var(--accent); }
-        .time-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
+        .countdown-label {
+            margin-bottom: 25px;
+        }
 
-        /* FORMULARZ */
-        .form-container input {
+        .time-val { font-size: 1.8rem; font-weight: 300; display: block; color: var(--text);}
+        .time-label { font-size: 0.65rem; text-transform: uppercase; opacity: 0.5; color: var(--text);}
+
+        /* Styl pola hasła - bardziej subtelny */
+        input[type="password"] {
             width: 100%;
-            max-width: 280px;
-            padding: 12px;
-            border: 1px solid #ddd;
+            padding: 12px 0;
             background: transparent;
-            text-align: center;
-            margin-bottom: 15px;
-            font-family: inherit;
+            border: none;
+            color: var(--text);
+            border-bottom: 1px solid rgba(74, 63, 53, 0.3);
+            font-size: 1rem;
+            margin-bottom: 30px;
             outline: none;
+            text-align: center;
         }
 
-        .form-container button {
-            width: 100%;
-            max-width: 280px;
-            padding: 12px;
+        button {
             background: var(--text);
-            color: white;
+            color: #fff;
             border: none;
+            padding: 12px 45px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.2em;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .form-container button:hover { opacity: 0.8; }
+        button:hover {
+            background: var(--accent);
+        }
 
-        /* ====== RESPONSYWNOŚĆ (KLUCZOWE POPRAWKI) ====== */
-        @media (max-width: 900px) {
-            .split-container {
-                flex-direction: column; /* Zdjęcie nad tekstem */
+        @media (max-width: 850px) {
+            .split-container { 
+                flex-direction: column; 
+                overflow-y: auto; 
+                height: auto; 
+                min-height: 100vh;
             }
-
-            .split-image {
-                height: 45vh; /* Zdjęcie zajmuje niecałą połowę wysokości */
+            .split-image { 
+                height: 40vh; /* Zdjęcie zajmuje 40% wysokości na telefonie */
+                flex: none; 
                 width: 100%;
-                flex: none;
             }
-
-            .split-content {
+            .split-content { 
+                flex: none;
                 width: 100%;
-                flex: none;
-                padding: 40px 20px;
-                min-height: 55vh; /* Reszta dla treści */
+                padding: 40px 20px; 
+                min-height: 60vh;
             }
-
             .panel {
-                padding: 20px;
-                max-width: 90%; /* Żeby nie dotykało krawędzi ekranu */
+                max-width: 100%;
             }
-
-            h1 {
-                font-size: 1.8rem;
-                letter-spacing: 3px;
+            h1 { font-size: 2rem; }
+            .countdown { 
+                gap: 15px; /* Mniejsze odstępy w liczniku na komórki */
             }
-
-            .countdown {
-                gap: 10px;
-            }
-
-            .time-val {
-                font-size: 1.5rem;
-            }
-
-            /* Zapewnia, że formularz i przycisk są widoczne bez przewijania w boki */
+            .time-val { font-size: 1.4rem; }
             .form-container {
                 width: 100%;
                 display: flex;
