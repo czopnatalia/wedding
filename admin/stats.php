@@ -33,8 +33,8 @@ $diet_summary = [];
 foreach ($rows as $row) {
     $guest_diets = [];
 
-    if ($row['diet_gluten_free']) $guest_diets[] = "Bez glutenu";
-    if ($row['diet_vege'])        $guest_diets[] = "Wege";
+    if ($row['diet_gluten_free']) $guest_diets[] = "Bezglutenowa";
+    if ($row['diet_vege'])        $guest_diets[] = "Wegetariańska";
 
     
     if (!empty($row['diet_other'])) {

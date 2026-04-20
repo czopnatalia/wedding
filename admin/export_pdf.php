@@ -30,8 +30,8 @@ $total_present = 0;
 $total_absent = 0;
 
 $diet_counts = [
-    "Bez glutenu" => 0,
-    "Wege" => 0,
+    "Bezglutenowa" => 0,
+    "Wegetariańska" => 0,
     "Inne" => 0
 ];
 
@@ -40,8 +40,8 @@ foreach ($guests as $g) {
     if ($g['attending']) $total_present++;
     else $total_absent++;
 
-    if ($g['diet_gluten_free']) $diet_counts["Bez glutenu"]++;
-    if ($g['diet_vege']) $diet_counts["Wege"]++;
+    if ($g['diet_gluten_free']) $diet_counts["Bezglutenowa"]++;
+    if ($g['diet_vege']) $diet_counts["Wegetariańska"]++;
     if ($g['diet_other']) $diet_counts["Inne"]++;
 }
 
@@ -88,8 +88,8 @@ foreach ($guests as $g) {
     if (!$g['attending']) continue;
 
     $diets = [];
-    if ($g['diet_gluten_free']) $diets[] = "Bez glutenu";
-    if ($g['diet_vege']) $diets[] = "Wege";
+    if ($g['diet_gluten_free']) $diets[] = "Bezglutenowa";
+    if ($g['diet_vege']) $diets[] = "Wegetariańska";
     if ($g['diet_other']) $diets[] = $g['diet_other'];
 
     $pdf->Cell(70,10, pl($g['name']),1);

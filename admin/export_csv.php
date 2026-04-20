@@ -26,8 +26,8 @@ fputcsv($output, [
 foreach ($guests as $g) {
 
     $diets = [];
-    if ($g['diet_gluten_free']) $diets[] = "Bez glutenu";
-    if ($g['diet_vege']) $diets[] = "Wege";
+    if ($g['diet_gluten_free']) $diets[] = "Bezglutenuowa";
+    if ($g['diet_vege']) $diets[] = "Wegetariańska";
     if ($g['diet_other']) $diets[] = $g['diet_other'];
 
     fputcsv($output, [

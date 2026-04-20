@@ -14,8 +14,8 @@ $guests = $db->query("SELECT * FROM guests ORDER BY name ASC")->fetchAll(PDO::FE
 // Liczniki
 $total_present = 0;
 $diet_counts = [
-    "Bez glutenu" => 0,
-    "Wege" => 0,
+    "Bezglutenowa" => 0,
+    "Wegetariańska" => 0,
     "Inne" => 0
 ];
 ?>
@@ -136,8 +136,8 @@ $diet_counts = [
             }
 
             // Zliczamy diety
-            if ($g['diet_gluten_free']) $diet_counts["Bez glutenu"]++;
-            if ($g['diet_vege']) $diet_counts["Wege"]++;
+            if ($g['diet_gluten_free']) $diet_counts["Bezglutenowa"]++;
+            if ($g['diet_vege']) $diet_counts["Wegetariańska"]++;
             if ($g['diet_other']) $diet_counts["Inne"]++;
 
             $row_class = $g['attending'] ? "present" : "absent";
@@ -150,13 +150,13 @@ $diet_counts = [
                 <td>
                     <?php
                         $diets = [];
-                        if ($g['diet_gluten_free']) $diets[] = "Bez glutenu";
-                        if ($g['diet_vege']) $diets[] = "Wege";
+                        if ($g['diet_gluten_free']) $diets[] = "Bezglutenowa";
+                        if ($g['diet_vege']) $diets[] = "Wegetariańska";
                         if ($g['diet_other']) $diets[] = htmlspecialchars($g['diet_other']);
                         echo implode(", ", $diets);
                     ?>
                 </td>
-                <td><?= htmlspecialchars($g['song']); echo implode(", ", $diets); ?></td>
+                <<td><?= htmlspecialchars($g['song'] ?? '') ?></td>
             </tr>
 
         <?php endforeach; ?>
