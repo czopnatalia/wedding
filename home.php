@@ -3,231 +3,265 @@ include 'includes/header.php';
 ?>
 
 <style>
-/* GŁÓWNY PANEL - MAKSYMALNY MINIMALIZM */
+/* PANEL GŁÓWNY */
 .main-panel {
     width: 95%;
-    max-width: 800px;
-    margin: 80px auto;
-    padding: 80px 40px;
-    background: rgba(255, 255, 255, 0.3); /* Bardzo delikatne szkło */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    max-width: 850px;
+    margin: 60px auto 100px;
+    padding: 80px 50px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: var(--text-main);
-    text-align: center;
 }
 
 /* TYPOGRAFIA NAGŁÓWKÓW */
-.invitation-label {
+.invitation-header {
     font-family: "Playfair Display", serif;
-    font-size: 0.9rem;
-    letter-spacing: 5px;
+    font-size: 3.5rem; /* Powiększona czcionka */
     text-transform: uppercase;
-    opacity: 0.7;
-    margin-bottom: 20px;
-    display: block;
+    letter-spacing: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 400;
 }
 
-.main-panel h2 {
+.wedding-date-hero {
     font-family: "Playfair Display", serif;
-    font-size: clamp(2rem, 5vw, 3.2rem); /* Elastyczna wielkość czcionki */
-    font-weight: 400;
-    margin-bottom: 30px;
-    line-height: 1.2;
+    font-size: 2.2rem; /* Taka sama czcionka jak Zaproszenie */
+    text-align: center;
+    margin-bottom: 40px;
+    display: block;
+    color: var(--text-main);
 }
 
 .intro-text {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    max-width: 600px;
-    margin: 0 auto 60px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 80px;
     font-weight: 300;
-    letter-spacing: 0.5px;
 }
 
-/* SEKCJA SZCZEGÓŁÓW - UKŁAD Z LINIĄ POMIĘDZY */
-.details-grid {
+/* UKŁAD SZCZEGÓŁÓW Z PIONOWĄ KRESKĄ */
+.wedding-details-container {
     display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: 40px;
-    margin: 60px 0;
-    align-items: start;
+    /* Etykiety (lewa) | Kreska | Treść (prawa) | Pinezki */
+    grid-template-columns: 160px 1px 1fr 60px;
+    gap: 0;
+    margin-bottom: 80px;
 }
 
-.detail-box {
-    padding: 20px 0;
-}
-
-.detail-box h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-
-.detail-box p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-.line-divider {
+.vertical-line {
     background: rgba(74, 63, 53, 0.2);
     height: 100%;
-    width: 1px;
 }
 
-/* PINEZKA MAPY */
-.map-link {
-    display: inline-flex;
+.details-left {
+    padding-right: 40px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.details-right {
+    padding-left: 40px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-label {
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    height: 120px; /* Dopasowane do wysokości info-block */
+    display: flex;
     align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: var(--accent);
-    font-size: 0.85rem;
+    justify-content: flex-end;
+}
+
+.info-block {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-block p {
+    font-size: 1.1rem;
+    line-height: 1.5;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: 0.3s;
+    letter-spacing: 1px;
+    margin: 0;
 }
 
-.map-link img {
-    width: 20px;
-    height: 20px;
-    filter: brightness(0.8);
+.info-block span {
+    display: block;
+    font-size: 1.05rem;
+    margin-top: 5px;
+    opacity: 0.8;
 }
 
-.map-link:hover {
-    opacity: 0.7;
-    transform: translateY(-2px);
+/* PINEZKI */
+.map-col {
+    display: flex;
+    flex-direction: column;
 }
 
-/* RSVP I KONTAKT */
-.rsvp-section {
-    margin-top: 80px;
-    padding-top: 60px;
+.map-btn-box {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-btn-box img {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+
+.map-btn-box img:hover {
+    transform: scale(1.2);
+}
+
+/* DOLNA SEKCJA: RSVP I KONTAKT */
+.bottom-section {
+    text-align: center;
     border-top: 1px solid rgba(74, 63, 53, 0.1);
+    padding-top: 60px;
 }
 
 .rsvp-text {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin-bottom: 30px;
-    font-style: italic;
+    font-style: normal; /* Wyłączony kursywa (niepochyły) */
 }
 
-.btn-minimal {
+.btn-rsvp {
     display: inline-block;
-    padding: 15px 40px;
+    padding: 16px 45px;
     border: 1px solid var(--text-main);
     color: var(--text-main);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     transition: all 0.4s ease;
     margin-bottom: 50px;
 }
 
-.btn-minimal:hover {
+.btn-rsvp:hover {
     background: var(--text-main);
     color: #fff !important;
 }
 
-.contact-info {
+.contact-links {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 50px;
 }
 
-.contact-item span {
+.contact-link {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+}
+
+.contact-link span {
     display: block;
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    opacity: 0.6;
     margin-bottom: 5px;
+    opacity: 0.6;
 }
 
-.contact-item a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-size: 1.1rem;
+.contact-link strong {
+    font-size: 1.2rem;
     font-weight: 400;
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .details-grid {
+    .wedding-details-container {
         grid-template-columns: 1fr;
     }
-    .line-divider {
-        height: 1px;
-        width: 50px;
-        margin: 0 auto;
-    }
-    .main-panel {
-        padding: 50px 20px;
-    }
-    .contact-info {
-        flex-direction: column;
-        gap: 25px;
-    }
+    .vertical-line, .details-left { display: none; }
+    .details-right { padding-left: 0; text-align: center; }
+    .invitation-header { font-size: 2.5rem; }
+    .wedding-date-hero { font-size: 1.8rem; }
+    .map-col { flex-direction: row; justify-content: center; gap: 30px; margin-top: 20px; }
+    .map-btn-box { height: auto; }
 }
 </style>
 
 <div class="main-panel fade-in-up">
-    <span class="invitation-label">Zaproszenie</span>
     
-    <h2>18 września 2026</h2>
-    
+    <div class="invitation-header">Zaproszenie</div>
+    <div class="wedding-date-hero">18 września 2026</div>
+
     <p class="intro-text">
         Serdecznie zapraszamy Was na uroczystość zawarcia związku małżeńskiego. 
         Będzie nam niezmiernie miło spędzić ten wyjątkowy dzień razem z Wami!
     </p>
 
-    <div class="details-grid">
-        <div class="detail-box">
-            <h3>Ślub</h3>
-            <p>
-                Parafia św. Jana Pawła II<br>
-                w Nowym Sączu<br>
-                Godzina 13:30
-            </p>
-            <a href="https://maps.google.com/?q=Parafia+Jana+Pawła+II+Nowy+Sącz" target="_blank" class="map-link">
-                <img src="assets/pin.png" alt="pin"> Zobacz na mapie
-            </a>
+    <div class="wedding-details-container">
+        
+        <div class="details-left">
+            <div class="category-label">Ślub</div>
+            <div class="category-label">Wesele</div>
         </div>
 
-        <div class="line-divider"></div>
+        <div class="vertical-line"></div>
 
-        <div class="detail-box">
-            <h3>Wesele</h3>
-            <p>
-                Restauracja Stacja Wola<br>
-                Wola Kurowska 69
-            </p>
-            <a href="https://maps.google.com/?q=Stacja+Wola+Wola+Kurowska" target="_blank" class="map-link">
-                <img src="assets/pin.png" alt="pin"> Zobacz na mapie
-            </a>
+        <div class="details-right">
+            <div class="info-block">
+                <p>Ceremonia zaślubin odbędzie się</p>
+                <p>Dnia 18 września 2026 o godzinie 13.00</p>
+                <p>w Parafi św. Jana Pawła II w Nowym Sączu.</p>
+            </div>
+            <div class="info-block">
+                <p>Przyjęcie weselne odbędzie się</p>
+                <p>w Restauracji Stacja Wola</p>
+                <p>w miejscowości Wola Kurowska 69.</p>
+            </div>
         </div>
+
+        <div class="map-col">
+            <div class="map-btn-box">
+                <a href="https://maps.google.com/?q=Parafia+Jana+Pawła+II+Nowy+Sącz" target="_blank">
+                    <img src="assets/pin.png" alt="mapa">
+                </a>
+            </div>
+            <div class="map-btn-box">
+                <a href="https://maps.google.com/?q=Restauracja+Stacja+Wola" target="_blank">
+                    <img src="assets/pin.png" alt="mapa">
+                </a>
+            </div>
+        </div>
+
     </div>
 
-    <div class="rsvp-section">
+    <div class="bottom-section">
         <p class="rsvp-text">
-            Prosimy o potwierdzenie obecności do dnia 15 sierpnia 2026 roku
+            Prosimy o potwierdzenie obecności do dnia 15 sierpnia 2026 w poniższym formularzu:
         </p>
-        
-        <a href="rsvp.php" class="btn-minimal">Potwierdzam obecność</a>
 
-        <div class="contact-info">
-            <div class="contact-item">
+        <a href="rsvp.php" class="btn-rsvp">Potwierdzam obecność</a>
+
+        <div class="contact-links">
+            <a href="tel:+48513999738" class="contact-link">
                 <span>Natalia</span>
-                <a href="tel:+48513999738">513 999 738</a>
-            </div>
-            <div class="contact-item">
+                <strong>513 999 738</strong>
+            </a>
+            <a href="tel:+48512899847" class="contact-link">
                 <span>Łukasz</span>
-                <a href="tel:+48512899847">512 899 847</a>
-            </div>
+                <strong>512 899 847</strong>
+            </a>
         </div>
     </div>
 </div>
