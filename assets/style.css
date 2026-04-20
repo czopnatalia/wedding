@@ -592,3 +592,35 @@ h2 {
 .contact-link-row:hover .contact-icon-small {
     color: #fff;
 }
+
+/* Wklej to na końcu pliku assets/style.css */
+
+@media (max-width: 768px) {
+    .site-header {
+        padding: 30px 15px 15px; /* Mniejszy padding na górze */
+    }
+
+    .site-title-panel h1 {
+        font-size: 1.8rem; /* Mniejsze imiona na telefonie */
+        letter-spacing: 4px;
+    }
+
+    .main-nav {
+        gap: 15px; /* Mniejsze odstępy między linkami */
+        flex-direction: row; /* Zostawiamy w rzędzie, zawinie się samo jeśli braknie miejsca */
+        justify-content: center;
+    }
+
+    .nav-tile {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        padding: 5px 0;
+    }
+
+    /* Wyśrodkowanie tekstu w kartach na mobile */
+    .section-card {
+        padding: 30px 20px;
+        margin: 20px 10px;
+        text-align: center;
+    }
+}

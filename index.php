@@ -161,6 +161,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         button:hover {
             background: var(--accent);
         }
+
+        @media (max-width: 850px) {
+            .split-container { 
+                flex-direction: column; 
+                overflow-y: auto; 
+                height: auto; 
+                min-height: 100vh;
+            }
+            .split-image { 
+                height: 40vh; /* Zdjęcie zajmuje 40% wysokości na telefonie */
+                flex: none; 
+                width: 100%;
+            }
+            .split-content { 
+                flex: none;
+                width: 100%;
+                padding: 40px 20px; 
+                min-height: 60vh;
+            }
+            .panel {
+                max-width: 100%;
+            }
+            h1 { font-size: 2rem; }
+            .countdown { 
+                gap: 15px; /* Mniejsze odstępy w liczniku na komórki */
+            }
+            .time-val { font-size: 1.4rem; }
+        }
     </style>
 </head>
 <body>
