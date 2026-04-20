@@ -168,8 +168,58 @@ html, body {
 .main-nav {
     display: flex;
     justify-content: center;
-    gap: 18px;
-    flex-wrap: wrap;
+    gap: 30px;
+    background: none !important;
+    border: none !important;
+}
+
+/* Styl dla imion */
+.nav-logo {
+    font-family: "Playfair Display", serif;
+    font-weight: 400; /* Usunięcie pogrubienia */
+    font-size: 1.8rem;
+    color: #4a3f35; /* Kolor spójny z resztą strony */
+    margin-bottom: 20px;
+    text-transform: none; /* Jeśli chcesz małe litery, zmień na none */
+    border: none !important; /* Na wypadek gdyby dziedziczył ramkę */
+    background: none !important;
+}
+
+/* Przyciski zamienione na linki z linią */
+.nav-link {
+    text-decoration: none;
+    color: #4a3f35;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 0;
+    position: relative;
+    transition: 0.3s;
+    border: none !important; /* Usuwa ramki z "nav-tile" */
+    background: none !important;
+}
+
+/* Delikatna linia pod linkiem */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #8c7e6d; /* Kolor akcentu */
+    transition: width 0.3s ease;
+}
+
+/* Efekt po najechaniu - linia się wysuwa */
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #8c7e6d;
 }
 
 .nav-tile {

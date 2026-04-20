@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .divider {
-            width: 50px;
+            width: 100px;
             height: 1px;
             margin: 50px auto;
             opacity: 0.2;
@@ -123,6 +123,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             justify-content: center;
             gap: 35px;
             margin-bottom: 50px;
+        }
+
+        .countdown-label {
+            margin-bottom: 25px;
         }
 
         .time-val { font-size: 1.8rem; font-weight: 300; display: block; color: var(--text);}
