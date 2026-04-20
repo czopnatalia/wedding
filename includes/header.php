@@ -3,11 +3,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Sprawdzamy, czy użytkownik ma JAKIKOLWIEK dostęp (jako gość LUB jako admin)
 $has_access = isset($_SESSION['access']) || isset($_SESSION['admin_logged_in']);
 $is_index = basename($_SERVER['PHP_SELF']) === 'index.php';
 
-// Jeśli nie ma dostępu i nie jest na stronie głównej (index.php) - wyrzuć do bramki
 if (!$has_access && !$is_index) {
     header("Location: /wedding/index.php");
     exit;
@@ -19,24 +17,17 @@ if (!$has_access && !$is_index) {
     <meta charset="UTF-8">
     <title>Natalia i Łukasz</title>
     <base href="/wedding/">
-    <link rel="stylesheet" href="assets/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css?v=<?php echo time(); ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
 </head>
 <body>
-<div class="site-wrapper" style="display: flex; flex-direction: column; min-height: 100vh;">
 
-<header class="site-header">
-    <div class="site-header-inner">
-        <div class="site-title-panel fade-in-up">
-            <h1>Natalia i Łukasz</h1>
-        </div>
-        <nav class="main-nav fade-in-up" style="animation-delay:0.15s;">
-            <a class="nav-tile" href="home.php">Strona główna</a>
-            <a class="nav-tile" href="rsvp.php">Potwierdź obecność</a>
-            <a class="nav-tile" href="galeria.php">Galeria zdjęć</a>
-            <a class="nav-tile" href="admin/admin_login.php">Administrator</a>
-        </nav>
-    </div>
+<header class="site-header" style="position: absolute; width: 100%; z-index: 100; background: transparent;">
+    <nav class="main-nav" style="display: flex; justify-content: center; gap: 20px; padding: 20px;">
+        <a class="nav-tile" href="home.php" style="text-decoration: none; color: #000; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;">Home</a>
+        <a class="nav-tile" href="rsvp.php" style="text-decoration: none; color: #000; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;">RSVP</a>
+        <a class="nav-tile" href="galeria.php" style="text-decoration: none; color: #000; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;">Galeria</a>
+    </nav>
 </header>
-<div class="site-wrapper"> <div class="main">
