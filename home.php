@@ -19,7 +19,7 @@ body, html {
 /* LEWA STRONA: ZDJĘCIE (ZACHOWUJEMY CIĄGŁOŚĆ Z INDEX.PHP) */
 .split-image {
     flex: 1;
-    background-image: url('assets/twoje-zdjecie.jpg'); 
+    background-image: url('assets/hero.jpg'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Subtelny efekt paralaksy przy przewijaniu */
