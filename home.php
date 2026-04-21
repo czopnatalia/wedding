@@ -40,7 +40,7 @@ include 'includes/header.php';
 
 .intro-text {
     font-size: 1.2rem;
-    line-height: 1.8;
+    line-height: 1.4;
     text-align: justify;
     max-width: 650px;
     margin: 0 auto 80px;
@@ -95,7 +95,7 @@ include 'includes/header.php';
 
 .info-block p {
     font-size: 1.2rem;
-    line-height: 1.8;
+    line-height: 1.4;
     margin: 0;
     letter-spacing: 0.3px;
     font-weight: 300;
@@ -138,9 +138,24 @@ include 'includes/header.php';
 .btn-rsvp:hover { background: var(--text-main); color: #fff !important; }
 
 .contact-links { display: flex; justify-content: center; gap: 50px; }
-.contact-link { text-decoration: none; color: inherit; text-align: center; }
-.contact-link span { display: block; font-size: 1rem; text-transform: uppercase; opacity: 0.6; }
+.contact-link { text-decoration: none; color: inherit; text-align: center; display: inline-block; transition: transform 0.3s ease, color 0.3s ease; /* Płynne powiększenie i zmiana koloru */}
+/* EFEKT PO NAJECHANIU (HOVER) */
+.contact-link:hover {
+    transform: scale(1.1); /* Delikatne powiększenie o 10% */
+    color: var(--accent);  /* Opcjonalnie: zmiana koloru na Twój akcentowy */
+}
+/* Dodatkowo, żeby napisy pod numerem nie skakały */
+.contact-link span {
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
 .contact-link strong { font-size: 1.2rem; font-weight: 400; }
+.contact-link:hover span {
+    opacity: 1; /* Napis "Natalia/Łukasz" stanie się wyraźniejszy po najechaniu */
+}
 
 /* --- RESPONSYWNOŚĆ (TYLKO DLA TELEFONU) --- */
 @media (max-width: 768px) {
@@ -179,36 +194,34 @@ include 'includes/header.php';
         height: auto;
         margin-bottom: 60px;
         font-size: 1rem; 
-        text-align: justify; 
-        text-justify: inter-word;
+        text-align: center;
     }
 
     /* Nagłówek sekcji (ŚLUB / WESELE) */
     .info-block::before {
         content: attr(data-label);
-        display: block;
+        display: inline-block;
         font-family: "Playfair Display", serif;
         font-size: 1.2rem;
         letter-spacing: 1px;
         margin-bottom: 8px;
+
+        border-bottom: 1px solid rgba(74, 63, 53, 0.3); 
+        padding-bottom: 8px; /* Odstęp między literami a kreską */
+        padding-left: 15px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
+        padding-right: 15px;
     }
 
     /* Delikatna kreska pod nagłówkiem */
     .info-block::after {
-        content: "";
-        display: block;
-        width: 100px;
-        height: 1px;
-        background: rgba(74, 63, 53, 0.2);
-        margin: 0 auto 15px;
+        display: none;
     }
 
     /* Mniejsza czcionka szczegółów */
     .info-block p {
-        font-size: 1.2rem; 
+        font-size: 1rem; 
         line-height: 1.6;
-        text-align: justify; 
-        text-justify: inter-word;
+        margin-top: 5px;
     }
 
     /* Pinezka bezpośrednio pod tekstem */
