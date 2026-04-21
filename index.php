@@ -187,11 +187,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .split-content { 
                 flex: 0 0 50vh; /* Treść zajmuje drugą połowę wysokości (50%) */
                 width: 100%;
-                padding-top: 0;
+                padding-top: 5px;
                 margin: 0;
                 min-height: 50vh;
                 display: flex;
-                align-items: flex-start; /* Centrowanie panelu w dolnej połowie */
+                align-items: center; /* Centrowanie panelu w dolnej połowie */
             }
             .divider {
                 width: 180px;
@@ -200,14 +200,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .panel {
                 max-width: 100%;
                 margin-top: 0;
-                padding-top: 5px;
+                padding-top: 5px; /* Minimalny odstęp od zdjęcia dla estetyki */
+                padding: 0 10px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 height: auto;
             }
-            h1 { font-size: 1.8rem; margin-top: 0; /* Usuwa margines nad napisem */
-                padding-top: 10px; }
+            h1 { font-size: 1.8rem; margin: 5px 0; margin-top: 0; }
             .date-main { margin-bottom: 5px; font-size: 0.9rem; }
             .countdown { 
                 gap: 20px; 
