@@ -188,14 +188,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 flex: 0 0 50vh; /* Treść zajmuje drugą połowę wysokości (50%) */
                 width: 100%;
                 padding: 10px 0; /* Zredukowany padding, by zyskać miejsce */
+                padding-top: 5px;
                 margin: 0;
                 min-height: 50vh;
                 display: flex;
                 align-items: center; /* Centrowanie panelu w dolnej połowie */
             }
             .divider {
-                width: 80px;
-                margin: 10px auto;
+                width: 140px;
+                margin: 30px auto;
             }
             .panel {
                 max-width: 100%;
@@ -216,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 font-size: 0.85rem;
             }
             input[type="password"] {
-                max-width: 180px; 
+                max-width: 140px; 
                 margin-bottom: 20px;
                 padding: 8px 0;
                 font-size: 0.9rem;
