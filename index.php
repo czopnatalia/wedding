@@ -148,20 +148,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         button {
-            background: var(--text);
-            color: #fff;
-            border-radius: 4px;
-            padding: 12px 45px;
-            font-size: 0.8rem;
+            border: 1px solid var(--text);
+            color: var(--text);
+            padding: 14px 40px;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 3px;
             cursor: pointer;
             transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
         }
 
         button:hover {
-            background: var(--accent);
-            
+            background: var(--text);
+            color: #fff;
+        }
+
+        .btn-rsvp:hover {
+            background: var(--text-main);
+            color: #fff !important;
         }
 
         @media (max-width: 850px) {
