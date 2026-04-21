@@ -209,7 +209,25 @@ include 'includes/header.php';
         margin: 30px auto;
     }
 
-    
+    /* Nagłówek sekcji (ŚLUB / WESELE) */
+    .info-block::before {
+        content: attr(data-label);
+        display: inline-block;
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+
+        
+        padding-bottom: 8px; /* Odstęp między literami a kreską */
+        padding-left: 5px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
+        padding-right: 5px;
+    }
+
+    /* Delikatna kreska pod nagłówkiem */
+    .info-block::after {
+        display: none;
+    }
 
     /* Mniejsza czcionka szczegółów */
     .info-block p {
