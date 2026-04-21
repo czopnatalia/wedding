@@ -206,7 +206,7 @@ include 'includes/header.php';
 
     .divider {
         width: 120px;
-        margin: 20px auto;
+        margin: 5px auto;
         height: 1px;
         margin: 40px auto;
         opacity: 0.2;
