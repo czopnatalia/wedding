@@ -175,43 +175,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         @media (max-width: 850px) {
             body, html { overflow: hidden; height: 100vh;}
-            .split-content { 
-                display: flex;
-                flex-direction: column; /* Układamy elementy w pionie */
-                align-items: center;    /* TO PRZYWRACA ŚRODEK W POZIOMIE */
-                justify-content: flex-start; /* TO PRZYKLEJA TREŚĆ DO GÓRY (pod zdjęcie) */
-                padding-top: 5px;         /* Usuwamy odstęp od zdjęcia */
-                width: 100%;
-                flex: 1;
+            .split-container { 
+                flex-direction: column; 
+                height: 100vh;
             }
             .split-image { 
                 flex: 0 0 50vh; /* Zdjęcie zajmuje dokładnie połowę wysokości (50%) */
                 width: 100%;
                 min-height: 50vh;
             }
-            
+            .split-content { 
+                flex: 0 0 50vh; /* Treść zajmuje drugą połowę wysokości (50%) */
+                width: 100%;
+                padding: 10px 0; /* Zredukowany padding, by zyskać miejsce */
+                margin: 0;
+                min-height: 50vh;
+                display: flex;
+                align-items: center; /* Centrowanie panelu w dolnej połowie */
+            }
             .divider {
-                width: 140px;
-                margin: 30px auto;
+                width: 80px;
+                margin: 10px auto;
             }
             .panel {
-                width: 100%;
                 max-width: 100%;
-                margin-top: 0;
-                text-align: center;
-                padding-top: 5px; /* Minimalny odstęp od zdjęcia dla estetyki */
-                padding: 0 10px;
+                padding: 0 20px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 height: auto;
             }
-            h1 { 
-                font-size: 1.8rem; 
-                margin: 5px 0; 
-                margin-top: 0; 
-                width: 100%;}
-            .date-main { margin-bottom: 5px; font-size: 0.9rem; }
+            h1 { font-size: 1.8rem; margin: 10px 0 10px 0; }
+            .date-main { margin-bottom: 10px; font-size: 0.9rem; }
             .countdown { 
                 gap: 20px; 
                 margin-bottom: 20px; /* Mniejsze odstępy w liczniku na komórki */
@@ -221,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 font-size: 0.85rem;
             }
             input[type="password"] {
-                max-width: 140px; 
+                max-width: 180px; 
                 margin-bottom: 20px;
                 padding: 8px 0;
                 font-size: 0.9rem;
