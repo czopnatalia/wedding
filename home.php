@@ -117,6 +117,10 @@ include 'includes/header.php';
 .map-btn-box img:hover { transform: scale(1.2); }
 
 .bottom-section {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    font-weight: 300;
     text-align: center;
     border-top: 1px solid rgba(74, 63, 53, 0.1);
     padding-top: 60px;
