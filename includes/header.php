@@ -19,8 +19,8 @@ if (!$has_access && !$is_index) {
     <base href="/wedding/">
     <link rel="stylesheet" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
     <style>
-        /* STYLE NAWIGACJI */
         .site-header {
             position: fixed;
             top: 0; width: 100%;
@@ -36,51 +36,62 @@ if (!$has_access && !$is_index) {
             padding: 10px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            height: 70px;
         }
-        .logo-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; text-decoration: none; color: #333; }
+        .site-title-panel h1 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 0; color: #333; }
         
-        .nav-menu { display: flex; gap: 20px; }
-        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; }
+        .nav-menu { display: flex; gap: 15px; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
 
-        .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; }
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
         .menu-toggle span { display: block; width: 25px; height: 3px; background: #333; transition: 0.3s; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .menu-toggle { display: flex; }
             .nav-menu {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 100%; left: 0; width: 100%;
+                top: 70px; left: 0; width: 100%;
                 background: #fff;
-                padding: 20px;
+                padding: 10px 0;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
                 text-align: center;
-                gap: 15px;
+                gap: 0;
             }
             .nav-menu.active { display: flex; }
+            .nav-menu a { padding: 15px; border-bottom: 1px solid #f5f5f5; width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
 <body>
+<div class="site-wrapper" style="display: flex; flex-direction: column; min-height: 100vh;">
+
 <header class="site-header">
     <div class="site-header-inner">
-        <a href="home.php" class="logo-text">N & Ł</a>
+        <div class="site-title-panel">
+            <h1>Natalia i Łukasz</h1>
+        </div>
+        
         <button class="menu-toggle" id="menu-btn">
             <span></span><span></span><span></span>
         </button>
+
         <nav class="nav-menu" id="nav-links">
-            <a href="home.php">Szczegóły</a>
-            <a href="gallery.php">Galeria</a>
-            <a href="rsvp.php">RSVP</a>
-            <a href="admin/login.php">Administrator</a>
+            <a href="home.php">Strona główna</a>
+            <a href="rsvp.php">Potwierdź obecność</a>
+            <a href="galeria.php">Galeria zdjęć</a>
+            <a href="admin/admin_login.php">Administrator</a>
         </nav>
     </div>
 </header>
+
 <div style="margin-top: 80px;"></div>
 
 <script>
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
-    menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
 </script>
