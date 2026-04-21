@@ -112,9 +112,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .divider {
-            width: 100px;
+            width: 140px;
             height: 1px;
-            margin: 80px auto;
+            margin: 40px auto;
             opacity: 0.2;
             background: var(--text);
         }
@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         /* Styl pola hasła - bardziej subtelny */
         input[type="password"] {
             width: 100%;
-            max-width: 100px;
+            max-width: 140px;
             padding: 12px 0;
             background: transparent;
             border: none;
@@ -172,6 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-decoration: none;
             background: transparent;
             width: 100px;
+            text-align: center;
         }
 
         button:hover {
