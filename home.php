@@ -3,7 +3,7 @@ include 'includes/header.php';
 ?>
 
 <style>
-/* PANEL GŁÓWNY */
+/* PANEL GŁÓWNY - PC */
 .main-panel {
     width: 95%;
     max-width: 850px;
@@ -12,7 +12,7 @@ include 'includes/header.php';
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px; /* Zmienione na sztywną wartość dla stabilności */
+    border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: var(--text-main);
     box-sizing: border-box;
@@ -46,12 +46,10 @@ include 'includes/header.php';
     margin: 0 auto 80px;
     letter-spacing: 0.3px;
     font-weight: 300;
-    hyphens: none;
-    word-break: keep-all;
     text-justify: inter-word;
 }
 
-/* UKŁAD SZCZEGÓŁÓW - GRID DLA KOMPUTERÓW */
+/* UKŁAD SZCZEGÓŁÓW - PC */
 .wedding-details-container {
     display: grid;
     grid-template-columns: 160px 1px 1fr 60px;
@@ -103,12 +101,6 @@ include 'includes/header.php';
     font-weight: 300;
 }
 
-/* PINEZKI */
-.map-col {
-    display: flex;
-    flex-direction: column;
-}
-
 .map-btn-box {
     height: 120px;
     display: flex;
@@ -122,23 +114,12 @@ include 'includes/header.php';
     transition: transform 0.3s ease;
 }
 
-.map-btn-box img:hover {
-    transform: scale(1.2);
-}
+.map-btn-box img:hover { transform: scale(1.2); }
 
-/* DOLNA SEKCJA */
 .bottom-section {
     text-align: center;
     border-top: 1px solid rgba(74, 63, 53, 0.1);
     padding-top: 60px;
-}
-
-.rsvp-text {
-    font-size: 1rem;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    letter-spacing: 0.3px;
-    font-weight: 300;
 }
 
 .btn-rsvp {
@@ -152,117 +133,106 @@ include 'includes/header.php';
     font-size: 0.85rem;
     transition: all 0.4s ease;
     margin-bottom: 50px;
-    font-weight: 400;
 }
 
-.btn-rsvp:hover {
-    background: var(--text-main);
-    color: #fff !important;
-}
+.btn-rsvp:hover { background: var(--text-main); color: #fff !important; }
 
-/* KONTAKT */
-.contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-}
+.contact-links { display: flex; justify-content: center; gap: 50px; }
+.contact-link { text-decoration: none; color: inherit; text-align: center; }
+.contact-link span { display: block; font-size: 1rem; text-transform: uppercase; opacity: 0.6; }
+.contact-link strong { font-size: 1.2rem; font-weight: 400; }
 
-.contact-link {
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.contact-link span {
-    display: block;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-    opacity: 0.6;
-    transition: color 0.3s ease;
-}
-
-.contact-link strong {
-    font-size: 1.2rem;
-    font-weight: 400;
-}
-
-.contact-link:hover {
-    transform: scale(1.08);
-    color: var(--accent);
-}
-
-/* --- RESPONSYWNOŚĆ (TYLKO DLA MOBILE) --- */
+/* --- RESPONSYWNOŚĆ (TYLKO DLA TELEFONU) --- */
 @media (max-width: 768px) {
     .main-panel {
         width: 100%;
-        margin: 10px 0;
+        margin: 0;
         padding: 40px 15px;
         border-radius: 0;
     }
     
-    .invitation-header { font-size: 1.8rem; letter-spacing: 4px; }
-    .wedding-date-hero { font-size: 1.5rem; }
-    .intro-text { font-size: 1rem; padding: 0 10px; margin-bottom: 40px; text-align: center; }
+    .invitation-header { font-size: 1.8rem; }
+    .wedding-date-hero { font-size: 1.4rem; }
 
-    /* Zamiana grida na kolumny pionowe */
+    /* Justowanie powitania */
+    .intro-text { 
+        font-size: 1rem; 
+        text-align: justify; 
+        text-justify: inter-word; 
+        margin-bottom: 40px;
+        padding: 0 5px;
+    }
+
     .wedding-details-container {
-        grid-template-columns: 1fr;
+        display: block; /* Zmiana na blokowy układ pionowy */
         margin-bottom: 40px;
     }
 
-    .vertical-line, .details-left { 
+    .vertical-line, .details-left, .map-col { 
         display: none; 
     }
 
-    .details-right { 
-        padding-left: 0; 
-        text-align: center; 
+    .details-right { padding: 0; }
+
+    /* Stylizacja sekcji ŚLUB i WESELE na mobile */
+    .info-block {
+        height: auto;
+        margin-bottom: 50px;
+        text-align: center;
     }
 
-    /* Wyświetlanie etykiet nad tekstem na mobile */
-    .details-right .info-block::before {
+    /* Nagłówek sekcji (ŚLUB / WESELE) */
+    .info-block::before {
         content: attr(data-label);
         display: block;
         font-family: "Playfair Display", serif;
-        font-size: 1.3rem;
-        text-transform: uppercase;
+        font-size: 1.2rem;
         letter-spacing: 2px;
-        margin-bottom: 10px;
-        color: var(--text-main);
+        margin-bottom: 8px;
     }
 
-    .info-block {
-        height: auto;
-        margin-bottom: 40px;
+    /* Delikatna kreska pod nagłówkiem */
+    .info-block::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 1px;
+        background: rgba(74, 63, 53, 0.2);
+        margin: 0 auto 15px;
     }
 
+    /* Mniejsza czcionka szczegółów */
     .info-block p {
-        font-size: 1.1rem;
+        font-size: 0.95rem; 
+        line-height: 1.6;
     }
 
-    /* Pinezki obok siebie na dole każdej sekcji */
-    .map-col {
-        flex-direction: row;
-        justify-content: center;
-        gap: 30px;
+    /* Pinezka bezpośrednio pod tekstem */
+    .mobile-map-link {
+        display: block;
+        margin-top: 15px;
     }
-    
-    .map-btn-box {
-        height: auto;
+    .mobile-map-link img {
+        width: 24px;
+        height: 24px;
     }
 
+    /* Mniejsza czcionka numerów telefonu */
     .contact-links {
         flex-direction: column;
-        gap: 25px;
+        gap: 20px;
     }
+    .contact-link span { font-size: 0.8rem; }
+    .contact-link strong { font-size: 1rem; }
+}
+
+/* Ukrycie mobilnych pinezek na PC */
+@media (min-width: 769px) {
+    .mobile-map-link { display: none; }
 }
 </style>
 
-<div class="main-panel fade-in-up">
-    
+<div class="main-panel">
     <div class="invitation-header">Zaproszenie</div>
     <div class="wedding-date-hero">18 WRZEŚNIA 2026</div>
 
@@ -272,7 +242,6 @@ include 'includes/header.php';
     </p>
 
     <div class="wedding-details-container">
-        
         <div class="details-left">
             <div class="category-label">ŚLUB</div>
             <div class="category-label">WESELE</div>
@@ -285,34 +254,33 @@ include 'includes/header.php';
                 <p>Ceremonia zaślubin odbędzie się</p>
                 <p>dnia 18 września 2026 o godzinie 13.30</p>
                 <p>w Parafii św. Jana Pawła II w Nowym Sączu.</p>
+                <a href="https://maps.google.com/?q=Parafia+Jana+Pawła+II+Nowy+Sącz" target="_blank" class="mobile-map-link">
+                    <img src="assets/pin.png" alt="mapa">
+                </a>
             </div>
+
             <div class="info-block" data-label="WESELE">
                 <p>Przyjęcie weselne odbędzie się</p>
                 <p>w Restauracji Stacja Wola</p>
                 <p>w miejscowości Wola Kurowska 69.</p>
+                <a href="https://maps.google.com/?q=Restauracja+Stacja+Wola" target="_blank" class="mobile-map-link">
+                    <img src="assets/pin.png" alt="mapa">
+                </a>
             </div>
         </div>
 
         <div class="map-col">
             <div class="map-btn-box">
-                <a href="https://maps.google.com/?q=Parafia+Jana+Pawła+II+Nowy+Sącz" target="_blank">
-                    <img src="assets/pin.png" alt="mapa">
-                </a>
+                <a href="https://maps.google.com/?q=Parafia+Jana+Pawła+II+Nowy+Sącz" target="_blank"><img src="assets/pin.png" alt="mapa"></a>
             </div>
             <div class="map-btn-box">
-                <a href="https://maps.google.com/?q=Restauracja+Stacja+Wola" target="_blank">
-                    <img src="assets/pin.png" alt="mapa">
-                </a>
+                <a href="https://maps.google.com/?q=Restauracja+Stacja+Wola" target="_blank"><img src="assets/pin.png" alt="mapa"></a>
             </div>
         </div>
-
     </div>
 
     <div class="bottom-section">
-        <p class="rsvp-text">
-            Prosimy o potwierdzenie obecności do dnia 15 sierpnia 2026 w poniższym formularzu
-        </p>
-
+        <p class="rsvp-text">Prosimy o potwierdzenie obecności do dnia 15 sierpnia 2026 w poniższym formularzu</p>
         <a href="rsvp.php" class="btn-rsvp">Potwierdzam obecność</a>
 
         <div class="contact-links">
