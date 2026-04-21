@@ -151,8 +151,8 @@ include 'includes/header.php';
         border-radius: 0;
     }
     
-    .invitation-header { font-size: 1.8rem; }
-    .wedding-date-hero { font-size: 1.4rem; }
+    .invitation-header { font-size: 1.8rem; letter-spacing: 1px;}
+    .wedding-date-hero { font-size: 1.2rem; }
 
     /* Justowanie powitania */
     .intro-text { 
@@ -177,8 +177,10 @@ include 'includes/header.php';
     /* Stylizacja sekcji ŚLUB i WESELE na mobile */
     .info-block {
         height: auto;
-        margin-bottom: 50px;
-        text-align: center;
+        margin-bottom: 60px;
+        font-size: 1rem; 
+        text-align: justify; 
+        text-justify: inter-word;
     }
 
     /* Nagłówek sekcji (ŚLUB / WESELE) */
@@ -187,7 +189,7 @@ include 'includes/header.php';
         display: block;
         font-family: "Playfair Display", serif;
         font-size: 1.2rem;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         margin-bottom: 8px;
     }
 
@@ -195,7 +197,7 @@ include 'includes/header.php';
     .info-block::after {
         content: "";
         display: block;
-        width: 40px;
+        width: 100px;
         height: 1px;
         background: rgba(74, 63, 53, 0.2);
         margin: 0 auto 15px;
@@ -203,8 +205,10 @@ include 'includes/header.php';
 
     /* Mniejsza czcionka szczegółów */
     .info-block p {
-        font-size: 0.95rem; 
+        font-size: 1.2rem; 
         line-height: 1.6;
+        text-align: justify; 
+        text-justify: inter-word;
     }
 
     /* Pinezka bezpośrednio pod tekstem */
@@ -215,14 +219,17 @@ include 'includes/header.php';
     .mobile-map-link img {
         width: 24px;
         height: 24px;
+        transition: transform 0.3s ease;
     }
+
+    .map-btn-box img:hover { transform: scale(1.2); }
 
     /* Mniejsza czcionka numerów telefonu */
     .contact-links {
         flex-direction: column;
         gap: 20px;
     }
-    .contact-link span { font-size: 0.8rem; }
+    .contact-link span { font-size: 1rem; }
     .contact-link strong { font-size: 1rem; }
 }
 
