@@ -148,16 +148,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         button {
-            border: 1px solid var(--text);
+            border: 1.2px solid var(--text);
             color: var(--text);
             padding: 14px 40px;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2.5px;
             cursor: pointer;
             transition: 0.3s;
             display: inline-block;
             text-decoration: none;
+            background: transparent;
         }
 
         button:hover {
