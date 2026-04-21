@@ -244,10 +244,7 @@ include 'includes/header.php';
         height: 24px;
         transition: transform 0.3s ease;
     }
-    .mobile-map-link img:active {
-        transform: scale(1.3); /* Powiększenie o 30% w momencie dotknięcia */
-        transition: transform 0.1s ease; /* Szybka reakcja na dotyk */
-    }
+
     .map-btn-box img:hover { transform: scale(1.2); }
 
     /* Mniejsza czcionka numerów telefonu */
