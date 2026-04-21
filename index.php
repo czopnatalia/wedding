@@ -187,26 +187,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .split-content { 
                 flex: 0 0 50vh; /* Treść zajmuje drugą połowę wysokości (50%) */
                 width: 100%;
-                padding: 10px 0; /* Zredukowany padding, by zyskać miejsce */
+                padding-top: 0;
                 margin: 0;
                 min-height: 50vh;
                 display: flex;
-                align-items: center; /* Centrowanie panelu w dolnej połowie */
+                align-items: flex-start; /* Centrowanie panelu w dolnej połowie */
             }
             .divider {
                 width: 180px;
-                margin: 10px auto;
-                padding: 0 5px;
+                margin: 40px auto;
             }
             .panel {
                 max-width: 100%;
-                padding: 0 10px;
+                margin-top: 0;
+                padding-top: 5px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 height: auto;
             }
-            h1 { font-size: 1.8rem; margin: 5px 0; }
+            h1 { font-size: 1.8rem; margin-top: 0; /* Usuwa margines nad napisem */
+                padding-top: 10px; }
             .date-main { margin-bottom: 5px; font-size: 0.9rem; }
             .countdown { 
                 gap: 20px; 
