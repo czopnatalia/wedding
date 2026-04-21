@@ -190,6 +190,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 margin: 0;
                 min-height: 60vh;
             }
+            .divider {
+                margin: 30px auto;
+            }
             .panel {
                 max-width: 100%;
                 margin: 0 auto;
@@ -198,6 +201,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             h1 { font-size: 2rem; }
             .countdown { 
                 gap: 15px; /* Mniejsze odstępy w liczniku na komórki */
+            }
+            input[type="password"] {
+                margin-bottom: 40px;
             }
             .time-val { font-size: 1.4rem; }
             .form-container, .form-container form {
