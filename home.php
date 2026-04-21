@@ -12,9 +12,10 @@ include 'includes/header.php';
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: var(--radius-lg);
+    border-radius: 20px; /* Zmienione na sztywną wartość dla stabilności */
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: var(--text-main);
+    box-sizing: border-box;
 }
 
 /* TYPOGRAFIA NAGŁÓWKÓW */
@@ -40,17 +41,17 @@ include 'includes/header.php';
 .intro-text {
     font-size: 1.2rem;
     line-height: 1.8;
-    text-align: justify; /* Wyjustowanie tekstu */
+    text-align: justify;
     max-width: 650px;
     margin: 0 auto 80px;
     letter-spacing: 0.3px;
     font-weight: 300;
-    hyphens: none;               /* Całkowicie wyłącza dzielenie wyrazów */
-    word-break: keep-all;        /* Zapobiega łamaniu wyrazów w połowie */
-    text-justify: inter-word;    /* Sprawia, że odstępy są regulowane tylko między słowami, a nie literami */
+    hyphens: none;
+    word-break: keep-all;
+    text-justify: inter-word;
 }
 
-/* UKŁAD SZCZEGÓŁÓW */
+/* UKŁAD SZCZEGÓŁÓW - GRID DLA KOMPUTERÓW */
 .wedding-details-container {
     display: grid;
     grid-template-columns: 160px 1px 1fr 60px;
@@ -80,7 +81,7 @@ include 'includes/header.php';
 .category-label {
     font-family: "Playfair Display", serif;
     font-size: 1.4rem;
-    text-transform: uppercase; /* Drukowane litery dla etykiet ŚLUB / WESELE */
+    text-transform: uppercase;
     height: 120px;
     display: flex;
     align-items: center;
@@ -97,17 +98,9 @@ include 'includes/header.php';
 .info-block p {
     font-size: 1.2rem;
     line-height: 1.8;
-    /* Usunięte uppercase - teraz tekst jest normalny */
     margin: 0;
     letter-spacing: 0.3px;
     font-weight: 300;
-}
-
-.info-block span {
-    display: block;
-    font-size: 1.05rem;
-    margin-top: 5px;
-    opacity: 0.8;
 }
 
 /* PINEZKI */
@@ -167,7 +160,7 @@ include 'includes/header.php';
     color: #fff !important;
 }
 
-/* KONTAKT Z EFEKTEM HOVER */
+/* KONTAKT */
 .contact-links {
     display: flex;
     justify-content: center;
@@ -178,7 +171,7 @@ include 'includes/header.php';
     text-decoration: none;
     color: inherit;
     text-align: center;
-    transition: all 0.3s ease; /* Płynne przejście dla efektu hover */
+    transition: all 0.3s ease;
 }
 
 .contact-link span {
@@ -196,29 +189,75 @@ include 'includes/header.php';
     font-weight: 400;
 }
 
-/* EFEKT HOVER DLA NUMERÓW TELEFONÓW */
 .contact-link:hover {
-    transform: scale(1.08); /* Delikatne powiększenie */
-    color: var(--accent); /* Zmiana koloru na akcentowy */
-}
-
-.contact-link:hover span {
+    transform: scale(1.08);
     color: var(--accent);
-    opacity: 1;
 }
 
-/* RESPONSIVE */
+/* --- RESPONSYWNOŚĆ (TYLKO DLA MOBILE) --- */
 @media (max-width: 768px) {
+    .main-panel {
+        width: 100%;
+        margin: 10px 0;
+        padding: 40px 15px;
+        border-radius: 0;
+    }
+    
+    .invitation-header { font-size: 1.8rem; letter-spacing: 4px; }
+    .wedding-date-hero { font-size: 1.5rem; }
+    .intro-text { font-size: 1rem; padding: 0 10px; margin-bottom: 40px; text-align: center; }
+
+    /* Zamiana grida na kolumny pionowe */
     .wedding-details-container {
         grid-template-columns: 1fr;
+        margin-bottom: 40px;
     }
-    .vertical-line, .details-left { display: none; }
-    .details-right { padding-left: 0; text-align: center; }
-    .invitation-header { font-size: 2.5rem; }
-    .wedding-date-hero { font-size: 1.8rem; }
-    .map-col { flex-direction: row; justify-content: center; gap: 30px; margin-top: 20px; }
-    .map-btn-box { height: auto; }
-    .intro-text { text-align: center; } /* Na mobile lepiej wygląda wyśrodkowane */
+
+    .vertical-line, .details-left { 
+        display: none; 
+    }
+
+    .details-right { 
+        padding-left: 0; 
+        text-align: center; 
+    }
+
+    /* Wyświetlanie etykiet nad tekstem na mobile */
+    .details-right .info-block::before {
+        content: attr(data-label);
+        display: block;
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        color: var(--text-main);
+    }
+
+    .info-block {
+        height: auto;
+        margin-bottom: 40px;
+    }
+
+    .info-block p {
+        font-size: 1.1rem;
+    }
+
+    /* Pinezki obok siebie na dole każdej sekcji */
+    .map-col {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    .map-btn-box {
+        height: auto;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        gap: 25px;
+    }
 }
 </style>
 
@@ -242,12 +281,12 @@ include 'includes/header.php';
         <div class="vertical-line"></div>
 
         <div class="details-right">
-            <div class="info-block">
+            <div class="info-block" data-label="ŚLUB">
                 <p>Ceremonia zaślubin odbędzie się</p>
                 <p>dnia 18 września 2026 o godzinie 13.30</p>
                 <p>w Parafii św. Jana Pawła II w Nowym Sączu.</p>
             </div>
-            <div class="info-block">
+            <div class="info-block" data-label="WESELE">
                 <p>Przyjęcie weselne odbędzie się</p>
                 <p>w Restauracji Stacja Wola</p>
                 <p>w miejscowości Wola Kurowska 69.</p>
