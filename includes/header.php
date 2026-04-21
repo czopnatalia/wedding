@@ -24,6 +24,24 @@ if (!$has_access && !$is_index) {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
     <style>
+        .site-header {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .site-header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 70px;
+        }
+        .site-title-panel h1 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 0; color: #333; }
         .nav-menu { display: flex; gap: 15px; }
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
 
