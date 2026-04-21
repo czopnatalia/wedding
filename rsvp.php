@@ -72,16 +72,24 @@ include 'includes/header.php';
     letter-spacing: 1px;
 }
 
-/* ZMIANY TYLKO NA TELEFONIE */
+/* --- RESPONSYWNOŚĆ DLA MOBILE --- */
 @media (max-width: 600px) {
     #rsvp-container.section-card {
-        margin: 0; width: 100%; max-width: 100%; border-radius: 0; padding: 30px 15px;
+        margin: 10px; /* Delikatny odstęp od krawędzi telefonu */
+        padding: 25px 15px;
+        width: calc(100% - 20px); /* Prawie pełna szerokość */
     }
-    #rsvp-container input[type="text"], #rsvp-container select {
-        font-size: 16px !important; /* Blokada zoomu */
-        padding: 15px;
+
+    h2 {
+        font-size: 1.6rem !important;
+        text-align: center;
     }
-    .submit-btn, .add-person-btn { width: 100% !important; padding: 18px; }
+
+    .form-row label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+    }
 }
 </style>
 
