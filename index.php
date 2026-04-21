@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: 0; padding: 0; height: 100%;
             width: 100%;
             font-family: "Inter", sans-serif;
+            overflow: hidden;
         }
 
         .split-container {
@@ -136,6 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         /* Styl pola hasła - bardziej subtelny */
         input[type="password"] {
             width: 100%;
+            max-width: 300px;
             padding: 12px 0;
             background: transparent;
             border: none;
@@ -172,6 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         @media (max-width: 850px) {
+            body, html { overflow: hidden; }
             .split-container { 
                 flex-direction: column; 
                 overflow-y: auto; 
@@ -179,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 min-height: 100vh;
             }
             .split-image { 
-                height: 40vh; /* Zdjęcie zajmuje 40% wysokości na telefonie */
+                height: 35vh; /* Zdjęcie zajmuje 40% wysokości na telefonie */
                 flex: none; 
                 width: 100%;
             }
@@ -191,16 +194,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 min-height: 60vh;
             }
             .divider {
-                margin: 30px auto;
+                width: 80px;
+                margin: 15px auto;
             }
             .panel {
                 max-width: 100%;
-                margin: 0 auto;
-                box-sizing: border-box;
+                padding: 0 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                height: 100%;
             }
-            h1 { font-size: 2rem; }
+            h1 { font-size: 1.8rem; margin: 0; }
+            .date-main { margin-bottom: 10px; font-size: 0.9rem; }
             .countdown { 
-                gap: 15px; /* Mniejsze odstępy w liczniku na komórki */
+                gap: 20px; 
+                margin-bottom: 20px; /* Mniejsze odstępy w liczniku na komórki */
+            }
+            .countdown-label {
+                margin-bottom: 10px;
+                font-size: 0.85rem;
             }
             input[type="password"] {
                 margin-bottom: 40px;
@@ -212,6 +225,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 flex-direction: column;
                 align-items: center;
             }
+            input[type="password"] {
+                max-width: 100px; /* Krótka kreska tak jak ta pod datą */
+                margin-bottom: 20px;
+                padding: 8px 0;
+            }
+            button {
+                padding: 10px 30px;
+                font-size: 0.85rem;
+            }
+
+            .error { font-size: 0.8rem; margin: 5px 0; }
         }
     </style>
 </head>
