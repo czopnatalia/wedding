@@ -196,10 +196,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .divider {
                 width: 180px;
                 margin: 10px auto;
+                padding: 0 5px;
             }
             .panel {
                 max-width: 100%;
-                padding: 0 20px;
+                padding: 0 10px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
