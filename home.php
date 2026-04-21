@@ -117,7 +117,7 @@ include 'includes/header.php';
 .map-btn-box img:hover { transform: scale(1.2); }
 
 .bottom-section {
-    font-size: 0.85rem;
+    font-size: 1rem;
     line-height: 1.4;
     letter-spacing: 0.3px;
     font-weight: 300;
@@ -176,6 +176,9 @@ include 'includes/header.php';
     /* Justowanie powitania */
     .intro-text { 
         font-size: 1rem; 
+        line-height: 1.4;
+        letter-spacing: 0.3px;
+        font-weight: 300;
         text-align: justify; 
         text-justify: inter-word; 
         margin-bottom: 40px;
@@ -212,8 +215,8 @@ include 'includes/header.php';
 
         border-bottom: 1px solid rgba(74, 63, 53, 0.3); 
         padding-bottom: 8px; /* Odstęp między literami a kreską */
-        padding-left: 15px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
-        padding-right: 15px;
+        padding-left: 25px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
+        padding-right: 25px;
     }
 
     /* Delikatna kreska pod nagłówkiem */
@@ -224,8 +227,10 @@ include 'includes/header.php';
     /* Mniejsza czcionka szczegółów */
     .info-block p {
         font-size: 1rem; 
-        line-height: 1.6;
         margin-top: 5px;
+        line-height: 1.4;
+        letter-spacing: 0.3px;
+        font-weight: 300;
     }
 
     /* Pinezka bezpośrednio pod tekstem */
