@@ -193,15 +193,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .split-image { 
                 flex: 0 0 50vh; /* Zdjęcie zajmuje dokładnie połowę wysokości (50%) */
                 width: 100%;
-                min-height: 50vh;
+                min-height: 45vh;
             }
             .split-content { 
-                flex: 0 0 50vh; /* Treść zajmuje drugą połowę wysokości (50%) */
+                flex: 0 0 55vh; /* Treść zajmuje drugą połowę wysokości (50%) */
                 width: 100%;
                 padding: 10px 0; /* Zredukowany padding, by zyskać miejsce */
                 padding-top: 5px;
                 margin: 0;
-                min-height: 50vh;
+                min-height: 55vh;
                 display: flex;
                 align-items: center; /* Centrowanie panelu w dolnej połowie */
             }
