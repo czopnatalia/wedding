@@ -213,10 +213,11 @@ include 'includes/header.php';
         letter-spacing: 1px;
         margin-bottom: 8px;
 
+        /* SKRÓCENIE KRESKI: Usunięto paddingi baczne, teraz kreska ma szerokość dokładnie taką jak tekst */
         border-bottom: 1px solid rgba(74, 63, 53, 0.3); 
-        padding-bottom: 8px; /* Odstęp między literami a kreską */
-        padding-left: 5px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
-        padding-right: 5px;
+        padding-bottom: 8px; 
+        padding-left: 0; 
+        padding-right: 0;
     }
 
     /* Delikatna kreska pod nagłówkiem */
@@ -243,7 +244,10 @@ include 'includes/header.php';
         height: 24px;
         transition: transform 0.3s ease;
     }
-
+    .mobile-map-link img:active {
+        transform: scale(1.3); /* Powiększenie o 30% w momencie dotknięcia */
+        transition: transform 0.1s ease; /* Szybka reakcja na dotyk */
+    }
     .map-btn-box img:hover { transform: scale(1.2); }
 
     /* Mniejsza czcionka numerów telefonu */
@@ -253,11 +257,6 @@ include 'includes/header.php';
     }
     .contact-link span { font-size: 1rem; }
     .contact-link strong { font-size: 1rem; }
-}
-
-/* Ukrycie mobilnych pinezek na PC */
-@media (min-width: 769px) {
-    .mobile-map-link { display: none; }
 }
 </style>
 
