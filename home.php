@@ -309,7 +309,7 @@ include 'includes/header.php';
     </div>
 
     <div class="bottom-section">
-        <p class="rsvp-text">Prosimy o potwierdzenie obecności do dnia 15 sierpnia 2026 w poniższym formularzu</p>
+        <p class="rsvp-text">Prosimy o potwierdzenie obecności do dnia 8 sierpnia 2026 w poniższym formularzu</p>
         <a href="rsvp.php" class="btn-rsvp">Potwierdzam obecność</a>
 
         <div class="contact-links">

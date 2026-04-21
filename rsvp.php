@@ -148,14 +148,14 @@ include 'includes/header.php';
                     </div>
                     
                     <div style="margin-top: 20px;">
-                        <label>Piosenka, którą chcesz usłyszeć:</label>
+                        <label>Czy jest jakaś piosenka, którą chcesz usłyszeć podczas zabawy weselnej?</label>
                         <input type="text" name="piosenka[0]" placeholder="Tytuł i wykonawca">
                     </div>
                 </div>
             </div>
         </div>
 
-        <button type="button" id="add-person" class="add-person-btn">+ Dodaj osobę towarzyszącą</button>
+        <button type="button" id="add-person" class="add-person-btn">+ Dodaj osobę towarzyszącą (lub potwierdź obecność pozostałych członków rodziny)</button>
         <button type="submit" class="submit-btn">Wyślij potwierdzenie</button>
     </form>
     <?php endif; ?>
