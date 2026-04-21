@@ -43,6 +43,7 @@ include 'includes/header.php';
     text-align: justify; /* Wyjustowanie tekstu */
     max-width: 650px;
     margin: 0 auto 80px;
+    letter-spacing: 0.3px;
     font-weight: 300;
     hyphens: none;               /* Całkowicie wyłącza dzielenie wyrazów */
     word-break: keep-all;        /* Zapobiega łamaniu wyrazów w połowie */
@@ -98,7 +99,8 @@ include 'includes/header.php';
     line-height: 1.8;
     /* Usunięte uppercase - teraz tekst jest normalny */
     margin: 0;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    font-weight: 300;
 }
 
 .info-block span {
@@ -139,8 +141,11 @@ include 'includes/header.php';
 }
 
 .rsvp-text {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 30px;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    font-weight: 300;
 }
 
 .btn-rsvp {
@@ -150,7 +155,7 @@ include 'includes/header.php';
     color: var(--text-main);
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-size: 0.85rem;
     transition: all 0.4s ease;
     margin-bottom: 50px;
@@ -238,7 +243,7 @@ include 'includes/header.php';
         <div class="details-right">
             <div class="info-block">
                 <p>Ceremonia zaślubin odbędzie się</p>
-                <p>dnia 18 września 2026 o godzinie 13.00</p>
+                <p>dnia 18 września 2026 o godzinie 13.30</p>
                 <p>w Parafii św. Jana Pawła II w Nowym Sączu.</p>
             </div>
             <div class="info-block">
