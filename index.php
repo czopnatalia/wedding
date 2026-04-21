@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .divider {
             width: 100px;
             height: 1px;
-            margin: 50px auto;
+            margin: 80px auto;
             opacity: 0.2;
             background: var(--text);
         }
@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         /* Styl pola hasła - bardziej subtelny */
         input[type="password"] {
             width: 100%;
-            max-width: 300px;
+            max-width: 100px;
             padding: 12px 0;
             background: transparent;
             border: none;
@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         button {
-            border: 1.2px solid var(--text);
+            border: 1.4px solid var(--text);
             color: var(--text);
             padding: 14px 40px;
             font-size: 0.95rem;
@@ -171,6 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: inline-block;
             text-decoration: none;
             background: transparent;
+            width: 100px;
         }
 
         button:hover {
@@ -205,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 align-items: center; /* Centrowanie panelu w dolnej połowie */
             }
             .divider {
-                width: 140px;
+                width: 120px;
                 margin: 30px auto;
             }
             .panel {
@@ -227,12 +228,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 font-size: 0.85rem;
             }
             input[type="password"] {
-                max-width: 140px; 
+                max-width: 120px; 
                 margin-bottom: 20px;
                 padding: 8px 0;
                 font-size: 0.9rem;
             }
-            .time-val { font-size: 1.4rem; }
+            .time-val { font-size: 1.3rem; }
             .form-container, .form-container form {
                 width: 100%;
                 display: flex;
@@ -243,6 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             button {
                 padding: 10px 30px;
                 font-size: 0.85rem;
+                max-width: 120px; 
             }
 
             .error { font-size: 0.8rem; margin: 5px 0; }
