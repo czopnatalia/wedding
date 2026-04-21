@@ -132,6 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-size: 0.9rem;
+            font-weight: 300;
         }
 
         .time-val { font-size: 1.8rem; font-weight: 300; display: block; color: var(--text);}
