@@ -22,7 +22,6 @@ if (!$has_access && !$is_index) {
     <link rel="stylesheet" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
 <div class="site-wrapper" style="display: flex; flex-direction: column; min-height: 100vh;">
@@ -38,14 +37,6 @@ if (!$has_access && !$is_index) {
             <a class="nav-tile" href="galeria.php">Galeria zdjęć</a>
             <a class="nav-tile" href="admin/admin_login.php">Administrator</a>
         </nav>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </div>
 </header>
 <div class="site-wrapper"> <div class="main">
-
-<script>
-function toggleMenu() {
-    const nav = document.getElementById("mainNav");
-    nav.classList.toggle("active");
-}
-</script>

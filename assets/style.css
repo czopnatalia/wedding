@@ -593,59 +593,34 @@ h2 {
     color: #fff;
 }
 
-/* ===== MOBILE ===== */
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
+/* Wklej to na końcu pliku assets/style.css */
 
-/* MOBILE */
 @media (max-width: 768px) {
-
-    .site-header-inner {
-        flex-direction: column;
-        align-items: flex-start;
+    .site-header {
+        padding: 30px 15px 15px; /* Mniejszy padding na górze */
     }
 
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        top: 15px;
-        right: 20px;
+    .site-title-panel h1 {
+        font-size: 1.8rem; /* Mniejsze imiona na telefonie */
+        letter-spacing: 4px;
     }
 
     .main-nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .main-nav.active {
-        display: flex;
+        gap: 15px; /* Mniejsze odstępy między linkami */
+        flex-direction: row; /* Zostawiamy w rzędzie, zawinie się samo jeśli braknie miejsca */
+        justify-content: center;
     }
 
     .nav-tile {
-        width: 100%;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        padding: 5px 0;
+    }
+
+    /* Wyśrodkowanie tekstu w kartach na mobile */
+    .section-card {
+        padding: 30px 20px;
+        margin: 20px 10px;
         text-align: center;
-        padding: 12px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    form {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 10px;
-    }
-
-    input, select, textarea, button {
-        width: 100% !important;
-        font-size: 16px; /* blokuje zoom na iOS */
-        box-sizing: border-box;
     }
 }
