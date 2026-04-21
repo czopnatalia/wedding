@@ -204,25 +204,12 @@ include 'includes/header.php';
         text-align: center;
     }
 
-    /* Nagłówek sekcji (ŚLUB / WESELE) */
-    .info-block::before {
-        content: attr(data-label);
-        display: inline-block;
-        font-family: "Playfair Display", serif;
-        font-size: 1.2rem;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-
-        border-bottom: 1px solid rgba(74, 63, 53, 0.3); 
-        padding-bottom: 8px; /* Odstęp między literami a kreską */
-        padding-left: 5px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
-        padding-right: 5px;
+    .divider {
+        width: 120px;
+        margin: 30px auto;
     }
 
-    /* Delikatna kreska pod nagłówkiem */
-    .info-block::after {
-        display: none;
-    }
+    
 
     /* Mniejsza czcionka szczegółów */
     .info-block p {
@@ -241,10 +228,8 @@ include 'includes/header.php';
     .mobile-map-link img {
         width: 24px;
         height: 24px;
-        transition: transform 0.3s ease;
     }
 
-    .map-btn-box img:hover { transform: scale(1.2); }
 
     /* Mniejsza czcionka numerów telefonu */
     .contact-links {
@@ -280,6 +265,7 @@ include 'includes/header.php';
 
         <div class="details-right">
             <div class="info-block" data-label="ŚLUB">
+                <div class="divider"></div>
                 <p>Ceremonia zaślubin odbędzie się</p>
                 <p>dnia 18 września 2026 o godzinie 13.30</p>
                 <p>w Parafii św. Jana Pawła II w Nowym Sączu.</p>
@@ -289,6 +275,7 @@ include 'includes/header.php';
             </div>
 
             <div class="info-block" data-label="WESELE">
+                <div class="divider"></div>
                 <p>Przyjęcie weselne odbędzie się</p>
                 <p>w Restauracji Stacja Wola</p>
                 <p>w miejscowości Wola Kurowska 69.</p>
