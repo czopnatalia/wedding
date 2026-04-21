@@ -212,7 +212,10 @@ include 'includes/header.php';
         margin: 10px auto 20px auto; /* Odstęp: 10px od góry, 20px od tekstu poniżej */
         opacity: 1; /* Upewnij się, że nie jest przezroczysta */
     }
-
+    .mobile-map-link:active img {
+        transform: scale(1.2);
+        transition: transform 0.2s;
+    }
     /* Nagłówek sekcji (ŚLUB / WESELE) */
     .info-block::before {
         content: attr(data-label);
@@ -221,9 +224,6 @@ include 'includes/header.php';
         font-size: 1.2rem;
         letter-spacing: 1px;
         margin-bottom: 8px;
-
-        
-        padding-bottom: 8px; /* Odstęp między literami a kreską */
         padding-left: 5px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
         padding-right: 5px;
     }
