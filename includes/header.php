@@ -22,113 +22,130 @@ if (!$has_access && !$is_index) {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
     <style>
-        /* RESET I PODSTAWA */
-        body { margin: 0; padding: 0; }
+        body { margin: 0; padding: 0; background-color: #f9f9f9; }
 
+        /* HEADER STAŁY */
         .site-header {
             position: fixed;
-            top: 0; 
-            left: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            top: 0; left: 0; width: 100%;
+            background: #fff; /* Pełny biały kolor, aby nic nie prześwitywało */
             z-index: 10000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .site-header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
             max-width: 1200px;
             margin: 0 auto;
-            height: 70px; /* Stała wysokość */
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Napis nad menu */
+            align-items: center;
+            gap: 15px;
         }
 
-        .site-title-panel h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.4rem; 
-            margin: 0; 
-            color: #333; 
+        /* NAPIS NA ŚRODKU */
+        .site-title-panel h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin: 0;
+            color: #333;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        /* MENU NA DUŻYM EKRANIE */
-        .main-nav { 
-            display: flex; 
-            gap: 20px; 
+        /* MENU NA KOMPUTERZE */
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
         }
 
-        .main-nav a { 
-            text-decoration: none; 
-            color: #333; 
-            font-weight: 500; 
-            font-size: 0.8rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            white-space: nowrap;
-            transition: color 0.3s;
+        .main-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 5px;
         }
 
-        .main-nav a:hover { color: #8c7e6d; }
-
-        /* HAMBURGER - UKRYTY DOMYŚLNIE */
-        .menu-toggle { 
-            display: none; 
-            flex-direction: column; 
-            gap: 5px; 
-            background: none; 
-            border: none; 
-            cursor: pointer; 
-            padding: 5px; 
-            z-index: 10001;
+        /* EFEKT PODKREŚLENIA PO NAJECHANIU */
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #8c7e6d;
+            transition: width 0.3s ease;
         }
 
-        .menu-toggle span { 
-            display: block; 
-            width: 25px; 
-            height: 3px; 
-            background: #333; 
-            transition: 0.3s; 
+        .main-nav a:hover::after {
+            width: 100%;
         }
 
-        /* ODSTĘP POD HEADEREM - zapobiega wjeżdżaniu treści pod spód */
+        /* UKRYTY HAMBURGER NA PC */
+        .menu-toggle { display: none; }
+
+        /* ODSTĘP POD HEADEREM - kluczowy, by treść nie wjeżdżała pod spód */
         .header-spacer {
-            height: 70px; /* Tyle samo co wysokość headera */
+            height: 140px; /* Dopasowane do wysokości rozbudowanego headera */
         }
 
-        /* STYLE DLA TELEFONU (MOBILE) */
+        /* --- RESPONSYWNOŚĆ (TELEFON) --- */
         @media (max-width: 900px) {
-            .menu-toggle { 
-                display: flex; /* Pokazuje kreski na telefonie */
+            .site-header-inner {
+                flex-direction: row; /* Na telefonie logo i hamburger obok siebie */
+                height: 70px;
+                padding: 0 20px;
+            }
+
+            .site-title-panel h1 { font-size: 1.4rem; }
+
+            .header-spacer { height: 70px; }
+
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .menu-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: #333;
             }
 
             .main-nav {
-                display: none; /* Ukrywa standardowe menu */
+                display: none; /* Ukryte menu mobilne */
                 flex-direction: column;
                 position: absolute;
-                top: 70px; 
-                left: 0; 
+                top: 70px;
+                left: 0;
                 width: 100%;
                 background: #fff;
-                padding: 10px 0;
+                padding: 20px 0;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                text-align: center;
                 gap: 0;
             }
 
-            .main-nav.active { 
-                display: flex; /* Pokazuje menu po kliknięciu w kreski */
+            .main-nav.active { display: flex; }
+
+            .main-nav a {
+                padding: 15px;
+                border-bottom: 1px solid #f5f5f5;
+                width: 100%;
+                text-align: center;
             }
 
-            .main-nav a { 
-                padding: 15px; 
-                border-bottom: 1px solid #f5f5f5; 
-                width: 100%; 
-                box-sizing: border-box; 
-                display: block;
-            }
+            .main-nav a::after { display: none; } /* Wyłączamy podkreślenie na mobile */
         }
     </style>
 </head>
@@ -140,10 +157,8 @@ if (!$has_access && !$is_index) {
             <h1>Natalia i Łukasz</h1>
         </div>
 
-        <button class="menu-toggle" id="menu-btn" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="menu-toggle" id="menu-btn">
+            <span></span><span></span><span></span>
         </button>
 
         <nav class="main-nav" id="nav-links">
@@ -157,7 +172,8 @@ if (!$has_access && !$is_index) {
 
 <div class="header-spacer"></div>
 
-<div class="site-wrapper" style="display: flex; flex-direction: column; min-height: calc(100vh - 70px);">
+<div class="site-wrapper">
+    <main>
 
 <script>
     const menuBtn = document.getElementById('menu-btn');
@@ -165,18 +181,5 @@ if (!$has_access && !$is_index) {
 
     menuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        
-        // Opcjonalnie: animacja skrzyżowania kresek
-        const spans = menuBtn.getElementsByTagName('span');
-        if (navLinks.classList.contains('active')) {
-            spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-            spans[1].style.opacity = "0";
-            spans[2].style.transform = "rotate(-45deg) translate(7px, -7px)";
-        } else {
-            spans[0].style.transform = "none";
-            spans[1].style.opacity = "1";
-            spans[2].style.transform = "none";
-        }
     });
 </script>
-<div class="site-wrapper"> <div class="main">
