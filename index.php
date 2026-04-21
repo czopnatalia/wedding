@@ -171,8 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: inline-block;
             text-decoration: none;
             background: transparent;
-            width: 100px;
-            text-align: center;
+            max-width: 140px; 
         }
 
         button:hover {
