@@ -177,14 +177,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             body, html { overflow: hidden; }
             .split-container { 
                 flex-direction: column; 
-                overflow-y: auto; 
-                height: auto; 
-                min-height: 100vh;
+                height: 100vh;
             }
             .split-image { 
-                height: 50vh; /* Zdjęcie zajmuje 40% wysokości na telefonie */
-                flex: none; 
-                width: 100%;
+                flex: 1; width: 100%; padding: 0; 
+                margin: 0; min-height: 65vh; 
+                display: flex;
+                align-items: flex-start; /* Przesunięcie wszystkiego do góry */
             }
             .split-content { 
                 flex: none;
@@ -202,10 +201,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 padding: 0 20px;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-evenly;
+                justify-content: flex-start;
                 height: 100%;
             }
-            h1 { font-size: 1.8rem; margin: 0 0 20px 0; }
+            h1 { font-size: 1.8rem; margin: 10px 0 10px 0; }
             .date-main { margin-bottom: 10px; font-size: 0.9rem; }
             .countdown { 
                 gap: 20px; 
