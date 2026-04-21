@@ -174,22 +174,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         @media (max-width: 850px) {
-            body, html { 
-                overflow: hidden; /* Całkowita blokada skrolowania */
-                height: 100vh;
-            }
-
+            body, html { overflow: hidden; height: 100vh;}
             .split-container { 
                 flex-direction: column; 
-                height: 100vh; /* Kontener zajmuje dokładnie 100% wysokości okna */
+                height: 100vh;
             }
-
             .split-image { 
                 flex: 0 0 50vh; /* Zdjęcie zajmuje dokładnie połowę wysokości (50%) */
                 width: 100%;
                 min-height: 50vh;
             }
-
             .split-content { 
                 flex: 0 0 50vh; /* Treść zajmuje drugą połowę wysokości (50%) */
                 width: 100%;
@@ -199,68 +193,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 display: flex;
                 align-items: center; /* Centrowanie panelu w dolnej połowie */
             }
-
+            .divider {
+                width: 80px;
+                margin: 10px auto;
+            }
             .panel {
                 max-width: 100%;
                 padding: 0 20px;
                 display: flex;
                 flex-direction: column;
-                justify-content: center; /* Skupienie elementów blisko siebie */
+                justify-content: center;
                 height: auto;
             }
-
-            /* Zmniejszone odstępy, aby wszystko się zmieściło */
-            h1 { 
-                font-size: 1.6rem; 
-                margin: 5px 0; 
-            }
-
-            .date-main { 
-                margin-bottom: 5px; 
-                font-size: 0.85rem; 
-            }
-
-            .divider {
-                width: 60px; /* Krótsza kreska */
-                margin: 10px auto;
-            }
-
-            .countdown-label {
-                margin-bottom: 5px;
-                font-size: 0.8rem;
-            }
-
+            h1 { font-size: 1.8rem; margin: 10px 0 10px 0; }
+            .date-main { margin-bottom: 10px; font-size: 0.9rem; }
             .countdown { 
-                gap: 15px; 
-                margin-bottom: 15px; 
+                gap: 20px; 
+                margin-bottom: 20px; /* Mniejsze odstępy w liczniku na komórki */
             }
-
-            .time-val { 
-                font-size: 1.2rem; 
+            .countdown-label {
+                margin-bottom: 10px;
+                font-size: 0.85rem;
             }
-
-            .time-label {
-                font-size: 0.6rem;
-            }
-
-            /* Poszerzony panel hasła */
             input[type="password"] {
-                max-width: 180px; /* Zwiększona szerokość z 100px na 180px */
-                margin-bottom: 15px;
+                max-width: 180px; 
+                margin-bottom: 20px;
                 padding: 8px 0;
                 font-size: 0.9rem;
             }
-
+            .time-val { font-size: 1.4rem; }
+            .form-container, .form-container form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
             button {
-                padding: 8px 25px;
-                font-size: 0.8rem;
+                padding: 10px 30px;
+                font-size: 0.85rem;
             }
 
-            .error { 
-                font-size: 0.75rem; 
-                margin: 2px 0; 
-            }
+            .error { font-size: 0.8rem; margin: 5px 0; }
         }
+    </style>
 </head>
 <body>
 
