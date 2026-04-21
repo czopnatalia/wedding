@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .date-main {
             font-size: 1.1rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
             margin-bottom: 30px;
             font-weight: 300;
@@ -128,9 +128,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .countdown-label {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
         }
 
         .time-val { font-size: 1.8rem; font-weight: 300; display: block; color: var(--text);}
@@ -145,12 +146,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border: none;
             color: var(--text);
             border-bottom: 1px solid rgba(74, 63, 53, 0.3);
-            font-size: 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
             margin-bottom: 30px;
             outline: none;
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
         }
 
         button {
@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding: 14px 40px;
             font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 2px;
             cursor: pointer;
             transition: 0.3s;
             display: inline-block;
@@ -237,7 +237,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             button {
                 padding: 10px 30px;
                 font-size: 0.85rem;
-                padding-top: 30px;
             }
 
             .error { font-size: 0.8rem; margin: 5px 0; }
