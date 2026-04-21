@@ -36,6 +36,21 @@ $res = $db->query("SELECT * FROM photos WHERE status='approved' ORDER BY uploade
             </div>
         <?php endwhile; ?>
     </div>
+    <div class="google-drive-notice" style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid rgba(74, 63, 53, 0.1); text-align: center; background: rgba(255,255,255,0.2); border-radius: 20px;">
+        <h3 style="font-family: 'Playfair Display', serif; color: var(--text-main); margin-bottom: 15px; font-size: 1.6rem;">
+            Więcej zdjęć?
+        </h3>
+        <p style="font-weight: 300; opacity: 0.8; max-width: 600px; margin: 0 auto 25px; line-height: 1.6;">
+            Jeśli chcesz przesłać nam dużą ilość zdjęć w pełnej rozdzielczości lub nasza galeria osiągnęła limit miejsca, możesz skorzystać bezpośrednio z folderu na Dysku Google.
+        </p>
+        
+        <a href="https://photos.app.goo.gl/M9eZx8snPfm74Sxe6" target="_blank" class="btn-elegant" style="background-color: #4285F4; border-color: #4285F4; color: white; display: inline-flex; align-items: center; gap: 10px; transition: opacity 0.3s;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.74 2L12 9.5L16.26 2H7.74ZM1.1 14.25L5.35 6.75H13.85L9.6 14.25H1.1ZM14.15 14.25L18.4 6.75L22.9 14.25H14.15ZM10.15 16H13.85L18.1 23.5H5.9L10.15 16Z"/>
+            </svg>
+            Prześlij na Dysk Google
+        </a>
+    </div>
 </div>
 
 <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
