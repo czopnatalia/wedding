@@ -182,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 min-height: 100vh;
             }
             .split-image { 
-                height: 35vh; /* Zdjęcie zajmuje 40% wysokości na telefonie */
+                height: 50vh; /* Zdjęcie zajmuje 40% wysokości na telefonie */
                 flex: none; 
                 width: 100%;
             }
@@ -195,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             .divider {
                 width: 80px;
-                margin: 15px auto;
+                margin: 20px auto;
             }
             .panel {
                 max-width: 100%;
@@ -205,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 justify-content: space-evenly;
                 height: 100%;
             }
-            h1 { font-size: 1.8rem; margin: 0; }
+            h1 { font-size: 1.8rem; margin: 0 0 20px 0; }
             .date-main { margin-bottom: 10px; font-size: 0.9rem; }
             .countdown { 
                 gap: 20px; 
@@ -216,7 +216,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 font-size: 0.85rem;
             }
             input[type="password"] {
-                margin-bottom: 40px;
+                max-width: 140px; 
+                margin-bottom: 20px;
+                padding: 8px 0;
             }
             .time-val { font-size: 1.4rem; }
             .form-container, .form-container form {
