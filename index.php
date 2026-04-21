@@ -205,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 justify-content: center;
                 height: auto;
             }
-            h1 { font-size: 1.8rem; margin: 10px 0 10px 0; }
+            h1 { font-size: 1.8rem; margin: 5px 0; }
             .date-main { margin-bottom: 5px; font-size: 0.9rem; }
             .countdown { 
                 gap: 20px; 
