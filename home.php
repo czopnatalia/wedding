@@ -206,7 +206,7 @@ include 'includes/header.php';
 
     .divider {
         display: block !important; /* Wymusza widoczność */
-        width: 100px; /* Krótka kreska */
+        width: 120px; /* Krótka kreska */
         height: 1px;
         background: rgba(74, 63, 53, 0.3); /* Kolor dopasowany do tekstu */
         margin: 10px auto 20px auto; /* Odstęp: 10px od góry, 20px od tekstu poniżej */
@@ -224,6 +224,9 @@ include 'includes/header.php';
         font-size: 1.2rem;
         letter-spacing: 1px;
         margin-bottom: 8px;
+
+        
+        padding-bottom: 8px; /* Odstęp między literami a kreską */
         padding-left: 5px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
         padding-right: 5px;
     }
