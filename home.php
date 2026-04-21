@@ -206,7 +206,11 @@ include 'includes/header.php';
 
     .divider {
         width: 120px;
-        margin: 30px auto;
+        margin: 20px auto;
+        height: 1px;
+        margin: 40px auto;
+        opacity: 0.2;
+        background: var(--text);
     }
 
     /* Nagłówek sekcji (ŚLUB / WESELE) */
