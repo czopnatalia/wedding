@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 align-items: center; /* Centrowanie panelu w dolnej połowie */
             }
             .divider {
-                width: 80px;
+                width: 180px;
                 margin: 10px auto;
             }
             .panel {
@@ -206,13 +206,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 height: auto;
             }
             h1 { font-size: 1.8rem; margin: 10px 0 10px 0; }
-            .date-main { margin-bottom: 10px; font-size: 0.9rem; }
+            .date-main { margin-bottom: 5px; font-size: 0.9rem; }
             .countdown { 
                 gap: 20px; 
                 margin-bottom: 20px; /* Mniejsze odstępy w liczniku na komórki */
             }
             .countdown-label {
-                margin-bottom: 10px;
+                margin-bottom: 5px;
                 font-size: 0.85rem;
             }
             input[type="password"] {
