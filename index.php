@@ -190,15 +190,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 margin: 0;
                 min-height: 60vh;
             }
-            h1 {
-                margin: 15px auto
-            }
             .divider {
                 margin: 30px auto;
             }
             .panel {
                 max-width: 100%;
-                margin: 10px;
+                margin: 0 auto;
                 box-sizing: border-box;
             }
             h1 { font-size: 2rem; }
