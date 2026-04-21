@@ -17,13 +17,11 @@ if (!$has_access && !$is_index) {
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Natalia i Łukasz</title>
     <base href="/wedding/">
     <link rel="stylesheet" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
-    <style>
 </head>
 <body>
 <div class="site-wrapper" style="display: flex; flex-direction: column; min-height: 100vh;">
