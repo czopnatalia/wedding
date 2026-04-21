@@ -213,11 +213,10 @@ include 'includes/header.php';
         letter-spacing: 1px;
         margin-bottom: 8px;
 
-        /* SKRÓCENIE KRESKI: Usunięto paddingi baczne, teraz kreska ma szerokość dokładnie taką jak tekst */
         border-bottom: 1px solid rgba(74, 63, 53, 0.3); 
-        padding-bottom: 8px; 
-        padding-left: 0; 
-        padding-right: 0;
+        padding-bottom: 8px; /* Odstęp między literami a kreską */
+        padding-left: 5px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
+        padding-right: 5px;
     }
 
     /* Delikatna kreska pod nagłówkiem */
@@ -254,6 +253,11 @@ include 'includes/header.php';
     }
     .contact-link span { font-size: 1rem; }
     .contact-link strong { font-size: 1rem; }
+}
+
+/* Ukrycie mobilnych pinezek na PC */
+@media (min-width: 769px) {
+    .mobile-map-link { display: none; }
 }
 </style>
 
