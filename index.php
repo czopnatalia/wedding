@@ -185,18 +185,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         @media (max-width: 850px) {
-            body, html { overflow: hidden; height: 100vh;}
+            body, html { overflow: hidden; position: fixed; height: 100vh;}
             .split-container { 
                 flex-direction: column; 
                 height: 100vh;
             }
             .split-image { 
-                flex: 0 0 50vh; /* Zdjęcie zajmuje dokładnie połowę wysokości (50%) */
+                flex: 0 0 45vh; /* Zdjęcie zajmuje dokładnie połowę wysokości (50%) */
                 width: 100%;
                 min-height: 45vh;
             }
             .split-content { 
-                flex: 0 0 55vh; /* Treść zajmuje drugą połowę wysokości (50%) */
+                flex: 1; /* Treść zajmuje drugą połowę wysokości (50%) */
                 width: 100%;
                 padding: 10px 0; /* Zredukowany padding, by zyskać miejsce */
                 padding-top: 5px;
@@ -211,17 +211,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             .panel {
                 max-width: 100%;
-                padding: 0 20px;
+                padding: 0 15px;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: space-around;
                 height: auto;
             }
-            h1 { font-size: 1.8rem; margin: 10px 0 10px 0; }
-            .date-main { margin-bottom: 10px; font-size: 0.9rem; }
+            h1 { font-size: 1.8rem; margin: 0 0 5px 0; }
+            .date-main { margin-bottom: 5px; font-size: 0.9rem; }
             .countdown { 
-                gap: 20px; 
-                margin-bottom: 20px; /* Mniejsze odstępy w liczniku na komórki */
+                gap: 15px; 
+                margin-bottom: 10px; /* Mniejsze odstępy w liczniku na komórki */
             }
             .countdown-label {
                 margin-bottom: 5px;
@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             input[type="password"] {
                 max-width: 120px; 
-                margin-bottom: 20px;
+                margin-bottom: 15px;
                 padding: 8px 0;
                 font-size: 0.9rem;
             }
