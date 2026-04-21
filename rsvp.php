@@ -58,24 +58,18 @@ include 'includes/header.php';
     font-weight: 500;
 }
 
-
-
 .submit-btn {
-    display: inline-block;
-    padding: 16px 45px;
-    border: 1px solid var(--text-main);
-    color: var(--text-main);
-    text-decoration: none;
+    width: 100%;
+    margin-top: 30px;
+    background: var(--accent);
+    color: #000;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.95rem;
-    transition: all 0.4s ease;
-    margin-bottom: 50px;
-}
-
-.submit-btn:hover {
-    background: var(--text-main);
-    color: #fff !important;
+    letter-spacing: 1px;
 }
 
 

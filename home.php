@@ -141,9 +141,9 @@ include 'includes/header.php';
 }
 
 .rsvp-text {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 30px;
-    line-height: 1.8;
+    line-height: 1.6;
     letter-spacing: 0.3px;
     font-weight: 300;
 }
@@ -159,6 +159,7 @@ include 'includes/header.php';
     font-size: 0.85rem;
     transition: all 0.4s ease;
     margin-bottom: 50px;
+    font-weight: 400;
 }
 
 .btn-rsvp:hover {
