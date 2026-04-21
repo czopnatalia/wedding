@@ -210,7 +210,7 @@ include 'includes/header.php';
         height: 1px;
         margin: 40px auto;
         opacity: 0.2;
-        background: var(--text);
+        background: #4a3f35;
     }
 
     /* Nagłówek sekcji (ŚLUB / WESELE) */
