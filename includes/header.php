@@ -24,6 +24,11 @@ if (!$has_access && !$is_index) {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="/wedding/favicon.jpg">
     <style>
+        .nav-menu { display: flex; gap: 15px; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+        .menu-toggle span { display: block; width: 25px; height: 3px; background: #333; transition: 0.3s; }
         @media (max-width: 900px) {
             .menu-toggle { display: flex; }
             .nav-menu {
@@ -53,7 +58,7 @@ if (!$has_access && !$is_index) {
         <button class="menu-toggle" id="menu-btn">
             <span></span><span></span><span></span>
         </button>
-        <nav class="main-nav">
+        <nav class="main-nav" id="nav-links">
             <a class="nav-tile" href="home.php">Strona główna</a>
             <a class="nav-tile" href="rsvp.php">Potwierdź obecność</a>
             <a class="nav-tile" href="galeria.php">Galeria zdjęć</a>
@@ -61,6 +66,7 @@ if (!$has_access && !$is_index) {
         </nav>
     </div>
 </header>
+<div style="margin-top: 80px;"></div>
 <script>
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
