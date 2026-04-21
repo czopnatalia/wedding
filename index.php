@@ -137,7 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .time-val { font-size: 1.8rem; font-weight: 300; display: block; color: var(--text);}
         .time-label { font-size: 0.65rem; text-transform: uppercase; opacity: 0.5; color: var(--text);}
-
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         /* Styl pola hasła - bardziej subtelny */
         input[type="password"] {
             width: 100%;
@@ -147,8 +151,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border: none;
             color: var(--text);
             border-bottom: 1px solid rgba(74, 63, 53, 0.3);
-            font-size: 0.7rem;
+            font-size: 0.9rem;
             letter-spacing: 0.1em;
+            font-weight: 300;
             margin-bottom: 30px;
             outline: none;
             text-align: center;
