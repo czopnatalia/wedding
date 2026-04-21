@@ -215,8 +215,8 @@ include 'includes/header.php';
 
         border-bottom: 1px solid rgba(74, 63, 53, 0.3); 
         padding-bottom: 8px; /* Odstęp między literami a kreską */
-        padding-left: 25px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
-        padding-right: 25px;
+        padding-left: 5px;  /* Jeśli chcesz, by kreska była nieco dłuższa niż napis */
+        padding-right: 5px;
     }
 
     /* Delikatna kreska pod nagłówkiem */
