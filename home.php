@@ -198,19 +198,19 @@ include 'includes/header.php';
 
     /* Stylizacja sekcji ŚLUB i WESELE na mobile */
     .info-block {
-        height: auto;
-        margin-bottom: 60px;
-        font-size: 1rem; 
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Wyśrodkuje napisy i kreskę */
+        height: auto; /* Ważne: usuwa stałą wysokość 120px */
     }
 
     .divider {
-        width: 120px;
-        margin: 5px auto;
+        display: block !important; /* Wymusza widoczność */
+        width: 100px; /* Krótka kreska */
         height: 1px;
-        margin: 40px auto;
-        opacity: 0.2;
-        background: #4a3f35;
+        background: rgba(74, 63, 53, 0.3); /* Kolor dopasowany do tekstu */
+        margin: 10px auto 20px auto; /* Odstęp: 10px od góry, 20px od tekstu poniżej */
+        opacity: 1; /* Upewnij się, że nie jest przezroczysta */
     }
 
     /* Nagłówek sekcji (ŚLUB / WESELE) */
