@@ -29,7 +29,7 @@ A bespoke, fully responsive web application designed to serve as a digital invit
 
 The project is fully deployed and accessible online. Guests can join the celebration by scanning the QR code below:
 
-![Wedding QR Code](https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https://natalia-i-lukasz.atwebpages.com/wedding/index.php?pass=kury)
+![Wedding QR Code](./qr_code.png)
 
 Guests can also join by link: https://natalia-i-lukasz.atwebpages.com/wedding/
 
